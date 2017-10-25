@@ -28,7 +28,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <Spinner
-        android:id="@+id/spinnerTupe"
+        android:id="@+id/spinnerContracts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Choisissez un type de contrat" />

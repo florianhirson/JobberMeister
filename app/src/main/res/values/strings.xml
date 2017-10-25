@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">JobberMeister</string>
+
+    <string-array name="domains">
+        <item>Informatique</item>
+        <item>Restauration</item>
+        <item>BTP</item>
+        <item>Vente</item>
+        <item>Finances</item>
+        <item>Droit</item>
+        <item>Santé</item>
+        <item>Social</item>
+    </string-array>
+
+    <string-array name="contracts">
+        <item>CDI</item>
+        <item>CDD</item>
+    </string-array>
 </resources>
