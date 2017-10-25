@@ -3,7 +3,6 @@ package fr.hirsonf.jobbermeister;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,10 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RegisterCredentialsActivity extends AppCompatActivity {
     Button b;
     EditText mail;
     TextInputEditText password;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +70,14 @@ public class RegisterCredentialsActivity extends AppCompatActivity {
         });
     }
 
-    boolean isEmailValid(CharSequence email) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    public static boolean isEmailValid(CharSequence email) {
+        Pattern pattern;
+        Matcher matcher;
+        String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
     }
+
+
 }

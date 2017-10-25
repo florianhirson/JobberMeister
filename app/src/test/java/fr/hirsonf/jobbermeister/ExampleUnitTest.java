@@ -14,4 +14,10 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
+
+    @Test
+    public void email_isCorrect() throws Exception {
+        RegisterCredentialsActivity r = new RegisterCredentialsActivity();
+        assertTrue(r.isEmailValid("flohirson@gmail.com"));
+    }
 }
