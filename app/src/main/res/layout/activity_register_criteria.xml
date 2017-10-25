@@ -8,27 +8,27 @@
     >
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewDomain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Domaine"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerDomain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Choisissez un domaine" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Type de contrat"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spinnerTupe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Choisissez un type de contrat" />

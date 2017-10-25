@@ -8,34 +8,51 @@
     >
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Nom"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <EditText
+        android:id="@+id/editTextLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Entrez votre nom"
         />
 
     <TextView
+        android:id="@+id/textViewFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Prenom"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <EditText
+        android:id="@+id/editTextFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Entrez votre prénom"
         />
 
     <TextView
+        android:id="@+id/textViewBirthDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Vous etes : "
+        android:text="Date de naissance"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+    <EditText
+        android:id="@+id/editTextBirthDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date" />
+
+    <TextView
+        android:id="@+id/textViewStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <RadioGroup
@@ -60,8 +77,6 @@
         android:id="@+id/b_next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Suivant"
-
-        />
+        android:text="Suivant" />
 
 </LinearLayout>
