@@ -20,17 +20,32 @@
         android:inputType="phone" />
 
     <TextView
-        android:id="@+id/textViewFax"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fax"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+    android:id="@+id/textViewFax"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Fax"
+    android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
     <EditText
         android:id="@+id/editTextFax"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Entrez le numéro de fax de votre société"
+        android:ems="10"
+        android:inputType="phone" />
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Entrez l'adresse email de votre société"
         android:ems="10"
         android:inputType="phone" />
 
@@ -45,7 +60,7 @@
         android:id="@+id/editTextStreet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Entrez l'addresse de votre société"
+        android:hint="Entrez l'adresse de votre société"
         android:ems="10"
         android:inputType="textPostalAddress" />
 
@@ -96,5 +111,5 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Suivant" />
 </LinearLayout>

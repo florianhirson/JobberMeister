@@ -2,14 +2,21 @@
     <string name="app_name">JobberMeister</string>
 
     <string-array name="domains">
-        <item>Informatique</item>
-        <item>Restauration</item>
-        <item>BTP</item>
-        <item>Vente</item>
-        <item>Finances</item>
+        <item>Agriculture</item>
+        <item>Artisanat</item>
+        <item>Automobile</item>
+        <item>Batiment</item>
+        <item>Commerce</item>
+        <item>Sécurité</item>
         <item>Droit</item>
-        <item>Santé</item>
+        <item>Enseignement</item>
+        <item>Industrie</item>
+        <item>Informatique</item>
+        <item>Médical</item>
+        <item>Restauration</item>
+        <item>Secrétariat</item>
         <item>Social</item>
+        <item>Transport</item>
     </string-array>
 
     <string-array name="contracts">
