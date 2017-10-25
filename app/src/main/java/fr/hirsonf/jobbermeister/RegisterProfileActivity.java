@@ -32,9 +32,11 @@ public class RegisterProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int selectedId = radioGroup.getCheckedRadioButtonId();
                 if(selectedId == R.id.r_applicant) {
+                    System.out.println("Applicant !");
                     Intent homepage = new Intent(RegisterProfileActivity.this, RegisterContactApplicantActivity.class);
                     startActivity(homepage);
                 } else if (selectedId == R.id.r_employer) {
+                    System.out.println("Employer !");
                     Intent homepage = new Intent(RegisterProfileActivity.this, RegisterContactEmployerActivity.class);
                     startActivity(homepage);
                 }
