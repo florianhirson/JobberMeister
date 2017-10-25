@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class RegisterCredentialsActivity extends AppCompatActivity {
-
+    Button b;
     EditText mail;
     TextInputEditText password;
 
@@ -21,13 +21,14 @@ public class RegisterCredentialsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_credentials);
 
-        Button b = (Button) findViewById(R.id.b_next);
+        b = (Button) findViewById(R.id.b_next);
         mail = (EditText) findViewById(R.id.editTextEmail);
         password = (TextInputEditText) findViewById(R.id.editTextPassword);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean envoi = true;
                 if(mail.getText().toString().trim().equals("") || password.getText().toString().trim().equals("")) {
                     AlertDialog.Builder b = new AlertDialog.Builder(RegisterCredentialsActivity.this);
                     b.setMessage("Veuillez completer tous les champs !");
@@ -37,14 +38,35 @@ public class RegisterCredentialsActivity extends AppCompatActivity {
 
                         }
                     });
+                    envoi = false;
                     AlertDialog a = b.create();
                     a.show();
-                } else {
+                }
+
+                if(!isEmailValid(mail.getText())) {
+                    AlertDialog.Builder b = new AlertDialog.Builder(RegisterCredentialsActivity.this);
+                    b.setMessage("Le format de l'adresse mail n'est pas correct !");
+                    b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                    envoi = false;
+                    AlertDialog a = b.create();
+                    a.show();
+                }
+
+                if (envoi) {
                     Intent homepage = new Intent(RegisterCredentialsActivity.this, RegisterProfileActivity.class);
                     startActivity(homepage);
                 }
 
             }
         });
+    }
+
+    boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }
