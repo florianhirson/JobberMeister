@@ -7,11 +7,11 @@ import android.support.v7.app.AppCompatActivity;
  * Created by flohi on 25/10/2017.
  */
 
-public class RegisterContactActivity extends AppCompatActivity {
+public class RegisterContactApplicantActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_contact);
+        setContentView(R.layout.activity_register_contact_applicant);
     }
 }

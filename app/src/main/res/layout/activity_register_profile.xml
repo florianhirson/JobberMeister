@@ -41,16 +41,19 @@
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/r_group"
         >
 
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Applicant"/>
+            android:text="Applicant"
+            android:id="@+id/r_applicant"/>
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Employer"/>
+            android:text="Employer"
+            android:id="@+id/r_employer"/>
     </RadioGroup>
 
     <Button
