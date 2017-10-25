@@ -25,7 +25,7 @@
         android:id="@+id/textViewFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Prenom"
+        android:text="Prénom"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <EditText
@@ -64,12 +64,12 @@
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Applicant"
+            android:text="Demandeur"
             android:id="@+id/r_applicant"/>
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Employer"
+            android:text="Employeur"
             android:id="@+id/r_employer"/>
     </RadioGroup>
 
