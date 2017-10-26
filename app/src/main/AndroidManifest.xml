@@ -33,6 +33,12 @@
         </activity>
 
         <activity
+            android:name=".RegisterCompanyActivity"
+            android:label="Société"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
             android:name=".RegisterContactApplicantActivity"
             android:label="Contact"
             android:screenOrientation="portrait">
@@ -54,7 +60,7 @@
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".DashboardActivity"
+        <activity android:name=".BrowseOffersActivity"
             android:label="Dashboard"
             android:screenOrientation="portrait">
         </activity>

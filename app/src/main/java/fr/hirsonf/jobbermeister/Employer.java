@@ -8,10 +8,11 @@ import java.util.List;
  */
 
 public class Employer extends User {
+    public String companyName;
+    public String position;
     public String phone;
     public String fax;
     public String companyEmail;
-    public String position;
     public List<Offer> offers;
 
     public Employer(){
@@ -22,10 +23,11 @@ public class Employer extends User {
     @Override
     public String toString() {
         return "Employer{" +
-                "phone='" + phone + '\'' +
+                "companyName='" + companyName + '\'' +
+                ", position='" + position + '\'' +
+                ", phone='" + phone + '\'' +
                 ", fax='" + fax + '\'' +
                 ", companyEmail='" + companyEmail + '\'' +
-                ", position='" + position + '\'' +
                 ", offers=" + offers +
                 super.toString() +
                 '}';

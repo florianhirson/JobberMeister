@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/textViewCompanyName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nom"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+    <EditText
+        android:id="@+id/editTextCompanyName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Entrez le nom de votre société"
+        android:ems="10"
+        android:inputType="text" />
+
+    <TextView
+    android:id="@+id/textViewPosition"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Poste"
+    android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+    <EditText
+        android:id="@+id/editTextPosition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Entrez votre poste dans votre société"
+        android:ems="10"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Suivant" />
+</LinearLayout>

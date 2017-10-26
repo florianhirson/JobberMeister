@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:hint="Entrez l'adresse email de votre société"
         android:ems="10"
-        android:inputType="phone" />
+        android:inputType="textEmailAddress" />
 
     <TextView
         android:id="@+id/textViewStreet"

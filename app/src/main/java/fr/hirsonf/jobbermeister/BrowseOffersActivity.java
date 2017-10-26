@@ -14,7 +14,7 @@ import com.mindorks.placeholderview.annotations.View;
  * Created by flohi on 26/10/2017.
  */
 
-public class DashboardActivity extends AppCompatActivity {
+public class BrowseOffersActivity extends AppCompatActivity {
 
     private SwipePlaceHolderView mSwipeView;
     private Context mContext;

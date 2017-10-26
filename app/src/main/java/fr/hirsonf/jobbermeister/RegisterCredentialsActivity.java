@@ -41,7 +41,7 @@ public class RegisterCredentialsActivity extends AppCompatActivity {
                     });
                     AlertDialog a = b.create();
                     a.show();
-                } else if(!isEmailValid(email.getText())) {
+                } else if (Model.checkEmail(email.getText()) == false) {
                     AlertDialog.Builder b = new AlertDialog.Builder(RegisterCredentialsActivity.this);
                     b.setMessage("Le format de l'adresse email est invalide !");
                     b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -63,15 +63,4 @@ public class RegisterCredentialsActivity extends AppCompatActivity {
             }
         });
     }
-
-    public static boolean isEmailValid(CharSequence email) {
-        Pattern pattern;
-        Matcher matcher;
-        String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-        pattern = Pattern.compile(EMAIL_PATTERN);
-        matcher = pattern.matcher(email);
-        return matcher.matches();
-    }
-
-
 }

@@ -1,6 +1,5 @@
 package fr.hirsonf.jobbermeister;
 
-import android.app.DownloadManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,19 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static fr.hirsonf.jobbermeister.RegisterCredentialsActivity.isEmailValid;
 
 /**
  * Created by flohi on 26/10/2017.
@@ -79,21 +68,12 @@ public class LoginActivity extends AppCompatActivity {
                     // Add the request to the RequestQueue.
                     queue.add(stringRequest);
                     */
-                    Intent homepage = new Intent(LoginActivity.this, DashboardActivity.class);
+                    Intent homepage = new Intent(LoginActivity.this, BrowseOffersActivity.class);
                     startActivity(homepage);
                 }
             }
         });
 
-    }
-
-    public static boolean isEmailValid(CharSequence email) {
-        Pattern pattern;
-        Matcher matcher;
-        String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-        pattern = Pattern.compile(EMAIL_PATTERN);
-        matcher = pattern.matcher(email);
-        return matcher.matches();
     }
 
     public boolean checkFields() {
@@ -109,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
             AlertDialog a = b.create();
             a.show();
             return false;
-        } else if (!isEmailValid(email.getText())) {
+        } else if (Model.checkEmail(email.getText()) == false) {
             AlertDialog.Builder b = new AlertDialog.Builder(LoginActivity.this);
             b.setMessage("Le format de l'adresse email est invalide !");
             b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
