@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme" >
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.LoginActivity"
             android:label="Acceuil"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -22,45 +22,45 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".RegisterCredentialsActivity"
+        <activity android:name=".activities.RegisterCredentialsActivity"
             android:label="Crédentiels"
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".RegisterProfileActivity"
+        <activity android:name=".activities.RegisterProfileActivity"
             android:label="Profil"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".RegisterCompanyActivity"
+            android:name=".activities.RegisterCompanyActivity"
             android:label="Société"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".RegisterContactApplicantActivity"
+            android:name=".activities.RegisterContactApplicantActivity"
             android:label="Contact"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".RegisterContactEmployerActivity"
+            android:name=".activities.RegisterContactEmployerActivity"
             android:label="Contact"
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".RegisterDescriptionActivity"
+        <activity android:name=".activities.RegisterDescriptionActivity"
             android:label="Description"
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".RegisterCriteriaActivity"
+        <activity android:name=".activities.RegisterCriteriaActivity"
             android:label="Critères"
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".BrowseOffersActivity"
+        <activity android:name=".activities.BrowseOffersActivity"
             android:label="Explorer les annonces"
             android:screenOrientation="portrait">
         </activity>

@@ -1,4 +1,4 @@
-package fr.hirsonf.jobbermeister;
+package fr.hirsonf.jobbermeister.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,8 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import fr.hirsonf.jobbermeister.Model;
+import fr.hirsonf.jobbermeister.R;
+import fr.hirsonf.jobbermeister.User;
 
 public class RegisterCredentialsActivity extends AppCompatActivity {
     Button b;

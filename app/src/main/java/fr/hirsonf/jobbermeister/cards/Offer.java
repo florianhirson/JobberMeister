@@ -1,4 +1,4 @@
-package fr.hirsonf.jobbermeister;
+package fr.hirsonf.jobbermeister.cards;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -9,7 +9,7 @@ import java.util.Date;
  * Created by Rémi on 25-Oct-17.
  */
 
-class Offer {
+public class Offer {
     @SerializedName("name")
     @Expose
     public String title;

@@ -2,6 +2,8 @@ package fr.hirsonf.jobbermeister;
 
 import org.junit.Test;
 
+import fr.hirsonf.jobbermeister.activities.RegisterCredentialsActivity;
+
 import static org.junit.Assert.*;
 
 /**
@@ -15,9 +17,5 @@ public class ExampleUnitTest {
         assertEquals(4, 2 + 2);
     }
 
-    @Test
-    public void email_isCorrect() throws Exception {
-        RegisterCredentialsActivity r = new RegisterCredentialsActivity();
-        assertTrue(r.isEmailValid("flohirson@gmail.com"));
-    }
+
 }

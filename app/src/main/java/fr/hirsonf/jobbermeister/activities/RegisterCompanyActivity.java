@@ -1,13 +1,16 @@
-package fr.hirsonf.jobbermeister;
+package fr.hirsonf.jobbermeister.activities;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import fr.hirsonf.jobbermeister.Employer;
+import fr.hirsonf.jobbermeister.Model;
+import fr.hirsonf.jobbermeister.R;
 
 /**
  * Created by flohi on 25/10/2017.

@@ -1,4 +1,4 @@
-package fr.hirsonf.jobbermeister;
+package fr.hirsonf.jobbermeister.activities;
 
 import android.content.Context;
 import android.graphics.Point;
@@ -8,7 +8,11 @@ import android.view.Gravity;
 
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
-import com.mindorks.placeholderview.annotations.View;
+
+import fr.hirsonf.jobbermeister.cards.AdCard;
+import fr.hirsonf.jobbermeister.cards.Offer;
+import fr.hirsonf.jobbermeister.R;
+import fr.hirsonf.jobbermeister.cards.Utils;
 
 /**
  * Created by flohi on 26/10/2017.

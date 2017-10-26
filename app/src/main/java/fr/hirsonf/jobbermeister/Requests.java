@@ -2,7 +2,6 @@ package fr.hirsonf.jobbermeister;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -18,20 +17,19 @@ import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONObject;
 
+import fr.hirsonf.jobbermeister.activities.BrowseOffersActivity;
+
 /**
  * Created by flohi on 26/10/2017.
  */
 
 public class Requests {
-    private final String BASE_URL = "http://frene20.iut-infobio.priv.univ-lille1.fr:8080";
-    private final String PATH = "/jobber/app/";
-
+    private final String BASE_URL = "http://10.19.0.156:8080/jobber/app/";
+    String url;
     public Requests () {}
 
-    public void doLoginRequest(final Context context, String email, String mdp) {
-        Uri.Builder b = Uri.parse(BASE_URL).buildUpon();
-        b.path(PATH+email+"/"+mdp);
-        String url = b.build().toString();
+    public void doLoginRequest(final Context context, final String login, final String mdp) {
+        url = BASE_URL + login + "/" + mdp;
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -47,24 +45,34 @@ public class Requests {
                     public void onErrorResponse(VolleyError error) {
                         if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                             Toast.makeText(context,
-                                    "Error Timeout ! ",
+                                    "Error Timeout ! : " + error,
                                     Toast.LENGTH_LONG).show();
+                            System.out.println("url : " + url);
+                            System.out.println(error);
                         } else if (error instanceof AuthFailureError) {
                             Toast.makeText(context,
-                                    "Error d'authentification ! ",
+                                    "Error d'authentification ! : " + error,
                                     Toast.LENGTH_LONG).show();
+                            System.out.println("url : " + url);
+                            System.out.println(error);
                         } else if (error instanceof ServerError) {
                             Toast.makeText(context,
-                                    "Error de Serveur ! ",
+                                    "Error de Serveur ! : " + error,
                                     Toast.LENGTH_LONG).show();
+                            System.out.println("url : " + url);
+                            System.out.println(error);
                         } else if (error instanceof NetworkError) {
                             Toast.makeText(context,
-                                    "Error de Réseau ! ",
+                                    "Error de Réseau ! : " + error,
                                     Toast.LENGTH_LONG).show();
+                            System.out.println("url : " + url);
+                            System.out.println(error);
                         } else if (error instanceof ParseError) {
                             Toast.makeText(context,
-                                    "Error de Parsing ! ",
+                                    "Error de Parsing ! : " + error,
                                     Toast.LENGTH_LONG).show();
+                            System.out.println("url : " + url);
+                            System.out.println(error);
                         }
 
                     }

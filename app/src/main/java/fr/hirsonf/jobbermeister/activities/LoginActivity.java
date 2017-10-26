@@ -1,10 +1,7 @@
-package fr.hirsonf.jobbermeister;
+package fr.hirsonf.jobbermeister.activities;
 
-import android.app.DownloadManager;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
@@ -12,24 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkError;
-import com.android.volley.NoConnectionError;
-import com.android.volley.ParseError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.ServerError;
-import com.android.volley.TimeoutError;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 
-import org.json.JSONObject;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import fr.hirsonf.jobbermeister.MySingleton;
+import fr.hirsonf.jobbermeister.R;
+import fr.hirsonf.jobbermeister.Requests;
 
 
 /**
@@ -38,9 +23,9 @@ import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button register, login, bypass;
-    EditText email;
-    TextInputEditText password;
+    Button register, bLogin, bypass;
+    EditText eLogin;
+    TextInputEditText ePassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +33,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         register = findViewById(R.id.b_register);
-        login = findViewById(R.id.b_login);
+        bLogin = findViewById(R.id.b_login);
         bypass = findViewById(R.id.b_bypass);
-        email = findViewById(R.id.editTextEmail);
-        password = findViewById(R.id.editTextPassword);
+        eLogin = findViewById(R.id.editTextEmail);
+        ePassword = findViewById(R.id.editTextPassword);
         RequestQueue queue = MySingleton.getInstance(this.getApplicationContext()).
                 getRequestQueue();
 
@@ -64,14 +49,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        login.setOnClickListener(new View.OnClickListener() {
+        bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkFields()) {
-                    String mail = email.getText().toString();
-                    String pwd = password.getText().toString();
+
+                    String mail = eLogin.getText().toString();
+                    String pwd = ePassword.getText().toString();
                     Requests r = new Requests();
                     r.doLoginRequest(LoginActivity.this, mail, pwd);
+
+
                 }
             }
         });
@@ -85,31 +73,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public static boolean isEmailValid(CharSequence email) {
-        Pattern pattern;
-        Matcher matcher;
-        String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-        pattern = Pattern.compile(EMAIL_PATTERN);
-        matcher = pattern.matcher(email);
-        return matcher.matches();
-    }
+
 
     public boolean checkFields() {
-        if (email.getText().toString().trim().equals("") || password.getText().toString().trim().equals("")) {
+        if (eLogin.getText().toString().trim().equals("") || ePassword.getText().toString().trim().equals("")) {
             AlertDialog.Builder b = new AlertDialog.Builder(LoginActivity.this);
             b.setMessage("Veuillez completer tous les champs !");
-            b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-
-                }
-            });
-            AlertDialog a = b.create();
-            a.show();
-            return false;
-        } else if (!isEmailValid(email.getText())) {
-            AlertDialog.Builder b = new AlertDialog.Builder(LoginActivity.this);
-            b.setMessage("Le format de l'adresse email est invalide !");
             b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
