@@ -39,10 +39,8 @@ public class LoginActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkFields()) {
-                    Intent homepage = new Intent(LoginActivity.this, RegisterCredentialsActivity.class);
-                    startActivity(homepage);
-                }
+                Intent homepage = new Intent(LoginActivity.this, RegisterCredentialsActivity.class);
+                startActivity(homepage);
             }
         });
 
