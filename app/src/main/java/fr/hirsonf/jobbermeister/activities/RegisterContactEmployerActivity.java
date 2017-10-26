@@ -74,8 +74,7 @@ public class RegisterContactEmployerActivity extends AppCompatActivity {
 
                     Intent homepage = new Intent(RegisterContactEmployerActivity.this, RegisterCompanyActivity.class);
                     homepage.putExtra("employer", employer);
-                    System.out.println(employer);
-                    Log.v("My Application", employer.toString());
+                    Log.e("My Application", employer.toString());
                     startActivity(homepage);
                 }
             }

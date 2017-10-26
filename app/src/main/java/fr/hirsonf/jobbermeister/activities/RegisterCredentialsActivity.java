@@ -50,8 +50,7 @@ public class RegisterCredentialsActivity extends AppCompatActivity {
 
                     Intent homepage = new Intent(RegisterCredentialsActivity.this, RegisterProfileActivity.class);
                     homepage.putExtra("user", user);
-                    System.out.println(user);
-                    Log.v("My Application", user.toString());
+                    Log.e("My Application", user.toString());
                     startActivity(homepage);
                 }
 

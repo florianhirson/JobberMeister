@@ -50,8 +50,7 @@ public class RegisterDescriptionActivity extends AppCompatActivity {
 
                     Intent homepage = new Intent(RegisterDescriptionActivity.this, RegisterCriteriaActivity.class);
                     homepage.putExtra("applicant", applicant);
-                    System.out.println(applicant);
-                    Log.v("My Application", applicant.toString());
+                    Log.e("My Application", applicant.toString());
                     startActivity(homepage);
                 }
             }

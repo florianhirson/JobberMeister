@@ -79,16 +79,13 @@ public class RegisterProfileActivity extends AppCompatActivity {
                         Applicant applicant = new Applicant(user);
                         Intent homepage = new Intent(RegisterProfileActivity.this, RegisterContactApplicantActivity.class);
                         homepage.putExtra("applicant", applicant);
-                        System.out.println(applicant);
-                        Log.v("My Application", applicant.toString());
+                        Log.e("My Application", applicant.toString());
                         startActivity(homepage);
                     } else if (selectedId == R.id.r_employer) {
                         Employer employer = new Employer(user);
-                        System.out.println("Employer !");
                         Intent homepage = new Intent(RegisterProfileActivity.this, RegisterContactEmployerActivity.class);
                         homepage.putExtra("employer", employer);
-                        System.out.println(employer);
-                        Log.v("My Application", employer.toString());
+                        Log.e("My Application", employer.toString());
                         startActivity(homepage);
                     }
 

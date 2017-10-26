@@ -53,8 +53,7 @@ public class RegisterCriteriaActivity extends AppCompatActivity {
                 // Intent homepage = new Intent(RegisterCriteriaActivity.this, RegisterDescriptionActivity.class);
                 // startActivity(homepage);
                 Toast.makeText(RegisterCriteriaActivity.this, (applicant).toString(), Toast.LENGTH_LONG).show();
-                System.out.println(applicant);
-                Log.v("My Application", applicant.toString());
+                Log.e("My Application", applicant.toString());
             }
         });
     }

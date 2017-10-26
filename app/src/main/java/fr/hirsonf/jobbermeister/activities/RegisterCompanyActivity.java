@@ -50,8 +50,7 @@ public class RegisterCompanyActivity extends AppCompatActivity {
                 } else {
                     employer.setCompanyName(companyName.getText().toString());
                     employer.setPosition(position.getText().toString());
-                    System.out.println(employer);
-                    Log.v("My Application", employer.toString());
+                    Log.e("My Application", employer.toString());
 
                     // Intent homepage = new Intent(RegisterCompanyActivity.this, CreateOfferActivity.class);
                     // startActivity(homepage);

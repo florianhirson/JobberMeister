@@ -58,8 +58,7 @@ public class RegisterContactApplicantActivity extends AppCompatActivity {
 
                     Intent homepage = new Intent(RegisterContactApplicantActivity.this, RegisterDescriptionActivity.class);
                     homepage.putExtra("applicant", applicant);
-                    System.out.println(applicant);
-                    Log.v("My Application", applicant.toString());
+                    Log.e("My Application", applicant.toString());
                     startActivity(homepage);
                 }
             }
