@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkFields()) {
+                if (checkFields()) { /*
                     // Instantiate the RequestQueue.
                     RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                     String url = "http://www.google.com";
@@ -78,6 +78,9 @@ public class LoginActivity extends AppCompatActivity {
                     });
                     // Add the request to the RequestQueue.
                     queue.add(stringRequest);
+                    */
+                    Intent homepage = new Intent(LoginActivity.this, DashboardActivity.class);
+                    startActivity(homepage);
                 }
             }
         });

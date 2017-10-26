@@ -3,6 +3,13 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     buildToolsVersion '26.0.2'
+    sourceSets {
+        main {
+            assets.srcDirs = ['src/main/assets', 'src/main/assets/']
+            res.srcDirs = ['src/main/res', 'src/main/res/drawable']
+        }
+    }
+
     defaultConfig {
         applicationId "fr.hirsonf.jobbermeister"
         minSdkVersion 24
@@ -17,6 +24,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
 }
 
 dependencies {
@@ -28,5 +37,9 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     compile "com.android.support:design:26.+"
     compile 'com.android.volley:volley:1.0.0'
+    compile 'com.mindorks:placeholderview:0.7.1'
+    compile 'com.android.support:cardview-v7:26+'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.google.code.gson:gson:2.7'
     testCompile 'junit:junit:4.12'
 }
