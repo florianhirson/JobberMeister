@@ -26,8 +26,8 @@ public class AdCard {
     @View(R.id.profileImageView)
     private ImageView profileImageView;
 
-    @View(R.id.nameAgeTxt)
-    private TextView nameAgeTxt;
+    @View(R.id.nameDomainTxt)
+    private TextView nameDomainTxt;
 
     @View(R.id.locationNameTxt)
     private TextView locationNameTxt;
@@ -45,7 +45,7 @@ public class AdCard {
     @Resolve
     private void onResolved(){
         Glide.with(mContext).load(mProfile.getImageUrl()).into(profileImageView);
-        nameAgeTxt.setText(mProfile.getName() + ", " + mProfile.getAge());
+        nameDomainTxt.setText(mProfile.getName() + ", " + mProfile.getDomain());
         locationNameTxt.setText(mProfile.getLocation());
     }
 
