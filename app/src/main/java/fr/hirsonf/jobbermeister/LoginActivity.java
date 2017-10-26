@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
-                                    Toast.makeText(LoginActivity.this, "Response is: " + response.substring(0, 500), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "Response is: " + response.substring(0, 500), Toast.LENGTH_LONG).show();
 
                                 }
                             }, new Response.ErrorListener() {

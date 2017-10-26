@@ -20,4 +20,17 @@ public class Applicant extends User {
         this.diplomas = new ArrayList<Diploma>();
         this.experiences = new ArrayList<Experience>();
     }
+
+    @Override
+    public String toString() {
+        return "Applicant{" +
+                "diplomas=" + diplomas +
+                ", experiences=" + experiences +
+                ", mobile='" + mobile + '\'' +
+                ", description='" + description + '\'' +
+                ", domainSought='" + domainSought + '\'' +
+                ", typeOfContractSought='" + typeOfContractSought + '\'' +
+                super.toString() +
+                '}';
+    }
 }

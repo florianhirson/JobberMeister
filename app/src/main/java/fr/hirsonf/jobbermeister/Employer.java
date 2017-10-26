@@ -18,4 +18,16 @@ public class Employer extends User {
         super();
         this.offers = new ArrayList<Offer>();
     }
+
+    @Override
+    public String toString() {
+        return "Employer{" +
+                "phone='" + phone + '\'' +
+                ", fax='" + fax + '\'' +
+                ", companyEmail='" + companyEmail + '\'' +
+                ", position='" + position + '\'' +
+                ", offers=" + offers +
+                super.toString() +
+                '}';
+    }
 }

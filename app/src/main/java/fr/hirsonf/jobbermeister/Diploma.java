@@ -14,4 +14,13 @@ class Diploma {
         this.school = s;
         this.year = y;
     }
+
+    @Override
+    public String toString() {
+        return "Diploma{" +
+                "name='" + name + '\'' +
+                ", school='" + school + '\'' +
+                ", year='" + year + '\'' +
+                '}';
+    }
 }

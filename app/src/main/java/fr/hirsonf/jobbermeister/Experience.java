@@ -14,4 +14,13 @@ class Experience {
         this.company = c;
         this.duration = dur;
     }
+
+    @Override
+    public String toString() {
+        return "Experience{" +
+                "domain='" + domain + '\'' +
+                ", company='" + company + '\'' +
+                ", duration=" + duration +
+                '}';
+    }
 }

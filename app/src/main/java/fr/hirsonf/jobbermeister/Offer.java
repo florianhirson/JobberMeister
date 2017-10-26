@@ -13,4 +13,16 @@ class Offer {
     public String typeOfContract;
     public Double wage;
     public Date startDate;
+
+    @Override
+    public String toString() {
+        return "Offer{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", domain='" + domain + '\'' +
+                ", typeOfContract='" + typeOfContract + '\'' +
+                ", wage=" + wage +
+                ", startDate=" + startDate +
+                '}';
+    }
 }

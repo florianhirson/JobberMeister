@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 /**
  * Created by flohi on 25/10/2017.
@@ -43,8 +44,9 @@ public class RegisterCriteriaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ((Applicant) Model.user).domainSought = domainSought.getSelectedItem().toString();
                 ((Applicant) Model.user).typeOfContractSought = typeOfContractSought.getSelectedItem().toString();
-                Intent homepage = new Intent(RegisterCriteriaActivity.this, RegisterDescriptionActivity.class);
-                startActivity(homepage);
+                // Intent homepage = new Intent(RegisterCriteriaActivity.this, RegisterDescriptionActivity.class);
+                // startActivity(homepage);
+                Toast.makeText(RegisterCriteriaActivity.this, ((Applicant) Model.user).toString(), Toast.LENGTH_LONG).show();
             }
         });
     }
