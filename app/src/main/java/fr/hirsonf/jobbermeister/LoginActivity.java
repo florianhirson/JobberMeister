@@ -1,5 +1,6 @@
 package fr.hirsonf.jobbermeister;
 
+import android.app.DownloadManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,8 +41,8 @@ public class LoginActivity extends AppCompatActivity {
 
         login = findViewById(R.id.b_login);
         register = findViewById(R.id.b_register);
-        email =  findViewById(R.id.editTextEmail);
-        password =  findViewById(R.id.editTextPassword);
+        email = findViewById(R.id.editTextEmail);
+        password = findViewById(R.id.editTextPassword);
 
 
         register.setOnClickListener(new View.OnClickListener() {
@@ -47,8 +56,28 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkFields()) {
+                if (checkFields()) {
+                    // Instantiate the RequestQueue.
+                    RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+                    String url = "http://www.google.com";
 
+                    // Request a string response from the provided URL.
+                    StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    Toast.makeText(LoginActivity.this, "Response is: " + response.substring(0, 500), Toast.LENGTH_SHORT).show();
+
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(LoginActivity.this, "That didn't work !", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+                    // Add the request to the RequestQueue.
+                    queue.add(stringRequest);
                 }
             }
         });
@@ -65,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public boolean checkFields() {
-        if(email.getText().toString().trim().equals("") || password.getText().toString().trim().equals("")) {
+        if (email.getText().toString().trim().equals("") || password.getText().toString().trim().equals("")) {
             AlertDialog.Builder b = new AlertDialog.Builder(LoginActivity.this);
             b.setMessage("Veuillez completer tous les champs !");
             b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -77,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
             AlertDialog a = b.create();
             a.show();
             return false;
-        } else if(!isEmailValid(email.getText())) {
+        } else if (!isEmailValid(email.getText())) {
             AlertDialog.Builder b = new AlertDialog.Builder(LoginActivity.this);
             b.setMessage("Le format de l'adresse email est invalide !");
             b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
