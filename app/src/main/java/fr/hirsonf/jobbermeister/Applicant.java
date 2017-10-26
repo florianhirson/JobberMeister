@@ -8,13 +8,10 @@ import java.util.List;
  */
 
 public class Applicant extends User {
-    public String phone;
-    public String street;
-    public String city;
-    public String zip;
-    public String description;
     public List<Diploma> diplomas;
     public List<Experience> experiences;
+    public String mobile;
+    public String description;
     public String domainSought;
     public String typeOfContractSought;
 
@@ -22,5 +19,18 @@ public class Applicant extends User {
         super();
         this.diplomas = new ArrayList<Diploma>();
         this.experiences = new ArrayList<Experience>();
+    }
+
+    @Override
+    public String toString() {
+        return "Applicant{" +
+                "diplomas=" + diplomas +
+                ", experiences=" + experiences +
+                ", mobile='" + mobile + '\'' +
+                ", description='" + description + '\'' +
+                ", domainSought='" + domainSought + '\'' +
+                ", typeOfContractSought='" + typeOfContractSought + '\'' +
+                super.toString() +
+                '}';
     }
 }

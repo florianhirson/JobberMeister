@@ -43,9 +43,11 @@ public class RegisterProfileActivity extends AppCompatActivity {
                 int selectedId = radioGroup.getCheckedRadioButtonId();
                 System.out.println("test : "+ radioGroup.getCheckedRadioButtonId());
 
-                if (birthDate.getText().toString().length() != 10 || birthDate.getText().toString().charAt(2) != '/' || birthDate.getText().toString().charAt(5) != '/') {
+                String c = checkBirthDate(birthDate.getText().toString());
+
+                if (c.equals("ok") == false) {
                     AlertDialog.Builder b = new AlertDialog.Builder(RegisterProfileActivity.this);
-                    b.setMessage("Le format de la date incorrect");
+                    b.setMessage(c);
                     b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -54,8 +56,6 @@ public class RegisterProfileActivity extends AppCompatActivity {
                     });
                     AlertDialog a = b.create();
                     a.show();
-                } else if (Integer.valueOf(birthDate.getText().toString().substring(0, 2)) < 1 || Integer.valueOf(birthDate.getText().toString().substring(0, 2)) > 31) {
-
                 } else if(lastName.getText().toString().trim().equals("") || firstName.getText().toString().trim().equals("")
                         || birthDate .getText().toString().trim().equals("") || selectedId == -1) {
                     AlertDialog.Builder b = new AlertDialog.Builder(RegisterProfileActivity.this);
@@ -89,7 +89,23 @@ public class RegisterProfileActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    private String checkBirthDate(String birthDate){
+        Date temp = null;
 
+        try {
+            temp = new Date(birthDate);
+        } catch (Exception ex) {
+            return "Le format de date est invalide !";
+        }
+
+        if (temp.before(new Date("01/01/1900")))
+            return "Vous êtes trop vieux !";
+
+        if (temp.after(new Date("01/01/2000")))
+            return "Vous êtes trop jeune !";
+
+        return "ok";
     }
 }

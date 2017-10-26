@@ -16,14 +16,14 @@ import android.widget.EditText;
 public class RegisterContactApplicantActivity extends AppCompatActivity {
 
     Button b;
-    EditText phone, street, city, zip;
+    EditText mobile, street, city, zip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_contact_applicant);
         b = (Button) findViewById(R.id.button);
-        phone = (EditText) findViewById(R.id.editTextPhone);
+        mobile = (EditText) findViewById(R.id.editTextMobile);
         street = (EditText) findViewById(R.id.editTextStreet);
         city = (EditText) findViewById(R.id.editTextCity);
         zip = (EditText) findViewById(R.id.editTextZIP);
@@ -31,7 +31,7 @@ public class RegisterContactApplicantActivity extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(phone.getText().toString().trim().equals("") || street.getText().toString().trim().equals("")
+                if(mobile.getText().toString().trim().equals("") || street.getText().toString().trim().equals("")
                         || city.getText().toString().trim().equals("") || zip.getText().toString().trim().equals("")) {
                     AlertDialog.Builder b = new AlertDialog.Builder(RegisterContactApplicantActivity.this);
                     b.setMessage("Veuillez completer tous les champs !");
@@ -44,6 +44,10 @@ public class RegisterContactApplicantActivity extends AppCompatActivity {
                     AlertDialog a = b.create();
                     a.show();
                 } else {
+                    ((Applicant) Model.user).mobile = mobile.getText().toString();
+                    Model.user.street = street.getText().toString();
+                    Model.user.city = city.getText().toString();
+                    Model.user.zip = zip.getText().toString();
                     Intent homepage = new Intent(RegisterContactApplicantActivity.this, RegisterDescriptionActivity.class);
                     startActivity(homepage);
                 }

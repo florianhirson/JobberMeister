@@ -11,13 +11,23 @@ public class Employer extends User {
     public String phone;
     public String fax;
     public String companyEmail;
-    public String street;
-    public String city;
-    public String zip;
+    public String position;
     public List<Offer> offers;
 
     public Employer(){
         super();
         this.offers = new ArrayList<Offer>();
+    }
+
+    @Override
+    public String toString() {
+        return "Employer{" +
+                "phone='" + phone + '\'' +
+                ", fax='" + fax + '\'' +
+                ", companyEmail='" + companyEmail + '\'' +
+                ", position='" + position + '\'' +
+                ", offers=" + offers +
+                super.toString() +
+                '}';
     }
 }
