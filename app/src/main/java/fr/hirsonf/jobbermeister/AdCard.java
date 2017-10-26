@@ -26,11 +26,11 @@ public class AdCard {
     @View(R.id.profileImageView)
     private ImageView profileImageView;
 
-    @View(R.id.nameDomainTxt)
-    private TextView nameDomainTxt;
+    @View(R.id.textViewOfferTitle)
+    private TextView textViewOfferTitle;
 
-    @View(R.id.locationNameTxt)
-    private TextView locationNameTxt;
+    @View(R.id.textViewOfferCompanyName)
+    private TextView textViewOfferCompanyName;
 
     private Profile mProfile;
     private Context mContext;
@@ -45,8 +45,8 @@ public class AdCard {
     @Resolve
     private void onResolved(){
         Glide.with(mContext).load(mProfile.getImageUrl()).into(profileImageView);
-        nameDomainTxt.setText(mProfile.getName() + ", " + mProfile.getDomain());
-        locationNameTxt.setText(mProfile.getLocation());
+        textViewOfferTitle.setText(mProfile.getName() + ", " + mProfile.getDomain());
+        textViewOfferCompanyName.setText(mProfile.getLocation());
     }
 
     @SwipeOut

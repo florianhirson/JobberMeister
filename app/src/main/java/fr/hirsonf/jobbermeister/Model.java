@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class Model {
     public static User user;
 
-    public static boolean checkEmail(CharSequence email) {
+    public static Boolean checkEmail(CharSequence email) {
         Pattern pattern;
         Matcher matcher;
         String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";

@@ -64,6 +64,11 @@
 
         </LinearLayout>
 
+        <Button
+            android:id="@+id/b_bypass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BYPASS" />
 
     </LinearLayout>
 </LinearLayout>

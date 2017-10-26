@@ -38,7 +38,7 @@ import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button login, register;
+    Button register, login, bypass;
     EditText email;
     TextInputEditText password;
 
@@ -47,8 +47,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        login = findViewById(R.id.b_login);
         register = findViewById(R.id.b_register);
+        login = findViewById(R.id.b_login);
+        bypass = findViewById(R.id.b_bypass);
         email = findViewById(R.id.editTextEmail);
         password = findViewById(R.id.editTextPassword);
         RequestQueue queue = MySingleton.getInstance(this.getApplicationContext()).
@@ -75,6 +76,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        bypass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent homepage = new Intent(LoginActivity.this, BrowseOffersActivity.class);
+                startActivity(homepage);
+            }
+        });
     }
 
     public static boolean isEmailValid(CharSequence email) {
