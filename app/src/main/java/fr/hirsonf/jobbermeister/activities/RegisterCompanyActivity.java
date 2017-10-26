@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import fr.hirsonf.jobbermeister.Employer;
+import fr.hirsonf.jobbermeister.model.Employer;
 import fr.hirsonf.jobbermeister.R;
 
 /**

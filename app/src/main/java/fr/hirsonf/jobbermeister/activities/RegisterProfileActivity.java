@@ -13,10 +13,10 @@ import android.widget.RadioGroup;
 
 import java.util.Date;
 
-import fr.hirsonf.jobbermeister.Applicant;
-import fr.hirsonf.jobbermeister.Employer;
+import fr.hirsonf.jobbermeister.model.Applicant;
+import fr.hirsonf.jobbermeister.model.Employer;
 import fr.hirsonf.jobbermeister.R;
-import fr.hirsonf.jobbermeister.User;
+import fr.hirsonf.jobbermeister.model.User;
 
 /**
  * Created by flohi on 25/10/2017.

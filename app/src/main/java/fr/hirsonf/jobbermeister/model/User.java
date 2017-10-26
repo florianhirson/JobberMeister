@@ -1,4 +1,4 @@
-package fr.hirsonf.jobbermeister;
+package fr.hirsonf.jobbermeister.model;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -10,11 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.android.volley.RequestQueue;
-
-import fr.hirsonf.jobbermeister.MySingleton;
 import fr.hirsonf.jobbermeister.R;
-import fr.hirsonf.jobbermeister.Requests;
+import fr.hirsonf.jobbermeister.requests.Requests;
 
 
 /**

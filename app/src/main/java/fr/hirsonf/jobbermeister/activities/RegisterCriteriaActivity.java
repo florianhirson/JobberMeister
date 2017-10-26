@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import fr.hirsonf.jobbermeister.Applicant;
+import fr.hirsonf.jobbermeister.model.Applicant;
 import fr.hirsonf.jobbermeister.R;
 
 /**

@@ -2,7 +2,6 @@ package fr.hirsonf.jobbermeister.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.ColorSpace;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import fr.hirsonf.jobbermeister.R;
-import fr.hirsonf.jobbermeister.User;
+import fr.hirsonf.jobbermeister.model.User;
 
 public class RegisterCredentialsActivity extends AppCompatActivity {
     Button b;

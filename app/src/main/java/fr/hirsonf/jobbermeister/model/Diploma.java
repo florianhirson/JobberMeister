@@ -1,4 +1,4 @@
-package fr.hirsonf.jobbermeister;
+package fr.hirsonf.jobbermeister.model;
 
 /**
  * Created by Rémi on 25-Oct-17.
