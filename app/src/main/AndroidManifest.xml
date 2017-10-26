@@ -14,21 +14,21 @@
 
         <activity
             android:name=".LoginActivity"
+            android:label="Acceuil"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <activity android:name=".RegisterCredentialsActivity"
-            android:label="Credentials"
+            android:label="Crédentiels"
             android:screenOrientation="portrait">
         </activity>
 
         <activity android:name=".RegisterProfileActivity"
-            android:label="Profile"
+            android:label="Profil"
             android:screenOrientation="portrait">
         </activity>
 
@@ -56,12 +56,12 @@
         </activity>
 
         <activity android:name=".RegisterCriteriaActivity"
-            android:label="Criteria"
+            android:label="Critères"
             android:screenOrientation="portrait">
         </activity>
 
         <activity android:name=".BrowseOffersActivity"
-            android:label="Dashboard"
+            android:label="Explorer les annonces"
             android:screenOrientation="portrait">
         </activity>
 

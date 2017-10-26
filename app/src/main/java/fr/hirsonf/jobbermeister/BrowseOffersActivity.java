@@ -41,8 +41,8 @@ public class BrowseOffersActivity extends AppCompatActivity {
                         .setSwipeOutMsgLayoutId(R.layout.ad_swipe_out_msg_view));
 
 
-        for(Profile profile : Utils.loadProfiles(this.getApplicationContext())){
-            mSwipeView.addView(new AdCard(mContext, profile, mSwipeView));
+        for(Offer offer : Utils.loadProfiles(this.getApplicationContext())){
+            mSwipeView.addView(new AdCard(mContext, offer, mSwipeView));
         }
 
         findViewById(R.id.rejectBtn).setOnClickListener(new android.view.View.OnClickListener() {

@@ -32,46 +32,64 @@ public class AdCard {
     @View(R.id.textViewCompanyName)
     private TextView textViewCompanyName;
 
-    private Profile mProfile;
+
+    @View(R.id.textViewLocation)
+    private TextView textViewLocation;
+
+    @View(R.id.textViewDescription)
+    private TextView textViewDescription;
+
+    @View(R.id.textViewStartDate)
+    private TextView textViewStartDate;
+
+    @View(R.id.textViewWage)
+    private TextView textViewWage;
+
+
+    private Offer mOffer;
     private Context mContext;
     private SwipePlaceHolderView mSwipeView;
 
-    public AdCard(Context context, Profile profile, SwipePlaceHolderView swipeView) {
+    public AdCard(Context context, Offer offer, SwipePlaceHolderView swipeView) {
         mContext = context;
-        mProfile = profile;
+        mOffer = offer;
         mSwipeView = swipeView;
     }
 
     @Resolve
-    private void onResolved(){
-        Glide.with(mContext).load(mProfile.getImageUrl()).into(imageViewLogo);
-        textViewTitle.setText(mProfile.getName() + ", " + mProfile.getDomain());
-        textViewCompanyName.setText(mProfile.getLocation());
+    private void onResolved() {
+        Glide.with(mContext).load(mOffer.logoURL).into(imageViewLogo);
+        textViewTitle.setText(mOffer.title);
+        textViewCompanyName.setText(mOffer.companyName);
+        textViewLocation.setText(mOffer.location);
+        textViewDescription.setText(mOffer.description);
+        textViewStartDate.setText(mOffer.startDate.toString());
+        textViewWage.setText(mOffer.wage.toString());
     }
 
     @SwipeOut
-    private void onSwipedOut(){
+    private void onSwipedOut() {
         Log.d("EVENT", "onSwipedOut");
         // mSwipeView.addView(this);
     }
 
     @SwipeCancelState
-    private void onSwipeCancelState(){
+    private void onSwipeCancelState() {
         Log.d("EVENT", "onSwipeCancelState");
     }
 
     @SwipeIn
-    private void onSwipeIn(){
+    private void onSwipeIn() {
         Log.d("EVENT", "onSwipedIn");
     }
 
     @SwipeInState
-    private void onSwipeInState(){
+    private void onSwipeInState() {
         Log.d("EVENT", "onSwipeInState");
     }
 
     @SwipeOutState
-    private void onSwipeOutState(){
+    private void onSwipeOutState() {
         Log.d("EVENT", "onSwipeOutState");
     }
 }

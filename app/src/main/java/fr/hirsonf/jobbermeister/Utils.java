@@ -28,17 +28,17 @@ public class Utils {
 
     private static final String TAG = "Utils";
 
-    public static List<Profile> loadProfiles(Context context){
+    public static List<Offer> loadProfiles(Context context){
         try{
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
             JSONArray array = new JSONArray(loadJSONFromAsset(context, "profiles.json"));
-            List<Profile> profileList = new ArrayList<>();
+            List<Offer> offersList = new ArrayList<Offer>();
             for(int i=0;i<array.length();i++){
-                Profile profile = gson.fromJson(array.getString(i), Profile.class);
-                profileList.add(profile);
+                Offer offer = gson.fromJson(array.getString(i), Offer.class);
+                offersList.add(offer);
             }
-            return profileList;
+            return offersList;
         }catch (Exception e){
             e.printStackTrace();
             return null;

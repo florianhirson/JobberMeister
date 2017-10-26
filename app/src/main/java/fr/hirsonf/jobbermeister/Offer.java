@@ -1,5 +1,8 @@
 package fr.hirsonf.jobbermeister;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 /**
@@ -7,22 +10,45 @@ import java.util.Date;
  */
 
 class Offer {
+    @SerializedName("name")
+    @Expose
     public String title;
-    public String description;
+
+    @SerializedName("domain")
+    @Expose
     public String domain;
+
     public String typeOfContract;
+
+    @SerializedName("location")
+    @Expose
+    public String location;
+
+    public String companyName;
+
+    public String description;
+
     public Double wage;
+
     public Date startDate;
+
+    @SerializedName("url")
+    @Expose
+    public String logoURL;
+
 
     @Override
     public String toString() {
         return "Offer{" +
                 "title='" + title + '\'' +
-                ", description='" + description + '\'' +
                 ", domain='" + domain + '\'' +
                 ", typeOfContract='" + typeOfContract + '\'' +
+                ", location='" + location + '\'' +
+                ", companyName='" + companyName + '\'' +
+                ", description='" + description + '\'' +
                 ", wage=" + wage +
                 ", startDate=" + startDate +
+                ", logoURL=" + logoURL +
                 '}';
     }
 }
