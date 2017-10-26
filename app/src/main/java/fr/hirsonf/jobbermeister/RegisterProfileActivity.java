@@ -15,15 +15,16 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.util.Date;
+
 /**
  * Created by flohi on 25/10/2017.
  */
 
 public class RegisterProfileActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
-    EditText lastName, firstName, date;
+    EditText lastName, firstName, birthDate ;
     Button b;
-    String ss;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class RegisterProfileActivity extends AppCompatActivity {
         radioGroup = (RadioGroup) findViewById(R.id.r_group);
         lastName = (EditText) findViewById(R.id.editTextLastName);
         firstName = (EditText) findViewById(R.id.editTextFirstName);
-        date = (EditText) findViewById(R.id.editTextBirthDate);
+        birthDate = (EditText) findViewById(R.id.editTextBirthDate);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,12 +43,7 @@ public class RegisterProfileActivity extends AppCompatActivity {
                 int selectedId = radioGroup.getCheckedRadioButtonId();
                 System.out.println("test : "+ radioGroup.getCheckedRadioButtonId());
 
-                ss = date.getText().toString();
-
-                if (date.getText().toString().length() == 10 &&(ss.charAt(2) == '/') && (ss.charAt(5) == '/')) {
-
-
-                } else {
+                if (birthDate.getText().toString().length() != 10 || birthDate.getText().toString().charAt(2) != '/' || birthDate.getText().toString().charAt(5) != '/') {
                     AlertDialog.Builder b = new AlertDialog.Builder(RegisterProfileActivity.this);
                     b.setMessage("Le format de la date incorrect");
                     b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -58,13 +54,10 @@ public class RegisterProfileActivity extends AppCompatActivity {
                     });
                     AlertDialog a = b.create();
                     a.show();
+                } else if (Integer.valueOf(birthDate.getText().toString().substring(0, 2)) < 1 || Integer.valueOf(birthDate.getText().toString().substring(0, 2)) > 31) {
 
-
-                }
-                ss = "";
-
-                if(lastName.getText().toString().trim().equals("") || firstName.getText().toString().trim().equals("")
-                        || date.getText().toString().trim().equals("") || selectedId == -1) {
+                } else if(lastName.getText().toString().trim().equals("") || firstName.getText().toString().trim().equals("")
+                        || birthDate .getText().toString().trim().equals("") || selectedId == -1) {
                     AlertDialog.Builder b = new AlertDialog.Builder(RegisterProfileActivity.this);
                     b.setMessage("Veuillez remplir tous les champs !");
                     b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -76,20 +69,24 @@ public class RegisterProfileActivity extends AppCompatActivity {
                     AlertDialog a = b.create();
                     a.show();
                 } else {
+                    String email = Model.user.email;
+                    String password = Model.user.password;
                     if(selectedId == R.id.r_applicant) {
-                        System.out.println("Applicant !");
+                        Model.user = new Applicant();
                         Intent homepage = new Intent(RegisterProfileActivity.this, RegisterContactApplicantActivity.class);
                         startActivity(homepage);
                     } else if (selectedId == R.id.r_employer) {
+                        Model.user = new Employer();
                         System.out.println("Employer !");
                         Intent homepage = new Intent(RegisterProfileActivity.this, RegisterContactEmployerActivity.class);
                         startActivity(homepage);
                     }
+                    Model.user.email = email;
+                    Model.user.password = password;
+                    Model.user.lastName = lastName.getText().toString();
+                    Model.user.firstName = firstName.getText().toString();
+                    Model.user.birthDate = new Date(birthDate.getText().toString());
                 }
-
-
-
-
             }
         });
 

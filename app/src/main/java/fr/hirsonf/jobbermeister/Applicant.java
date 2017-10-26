@@ -8,18 +8,18 @@ import java.util.List;
  */
 
 public class Applicant extends User {
-    public static String phone;
-    public static String street;
-    public static String city;
-    public static String zip;
-    public static String description;
-    public static List<Diploma> diplomas;
-    public static List<Experience> experiences;
-    public static String domainSought;
-    public static String typeOfContractSought;
+    public String phone;
+    public String street;
+    public String city;
+    public String zip;
+    public String description;
+    public List<Diploma> diplomas;
+    public List<Experience> experiences;
+    public String domainSought;
+    public String typeOfContractSought;
 
-    public Applicant(String e, String p){
-        super(e, p);
+    public Applicant(){
+        super();
         this.diplomas = new ArrayList<Diploma>();
         this.experiences = new ArrayList<Experience>();
     }

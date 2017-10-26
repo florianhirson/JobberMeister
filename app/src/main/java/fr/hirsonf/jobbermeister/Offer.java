@@ -10,7 +10,7 @@ class Offer {
     public String title;
     public String description;
     public String domain;
-    public static String typeOfContract;
+    public String typeOfContract;
     public Double wage;
     public Date startDate;
 }

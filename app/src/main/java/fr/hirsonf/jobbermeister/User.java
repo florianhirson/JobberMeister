@@ -7,14 +7,9 @@ import java.util.Date;
  */
 
 public class User {
-    public static String email;
-    public static String password;
-    public static String lastName;
-    public static String firstName;
-    public static Date birthDate;
-
-    public User(String e, String p){
-        this.email = e;
-        this.password = p;
-    }
+    public String email;
+    public String password;
+    public String lastName;
+    public String firstName;
+    public Date birthDate;
 }

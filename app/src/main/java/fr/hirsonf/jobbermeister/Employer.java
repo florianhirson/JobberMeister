@@ -8,16 +8,16 @@ import java.util.List;
  */
 
 public class Employer extends User {
-    public static String phone;
-    public static String fax;
-    public static String companyEmail;
-    public static String street;
-    public static String city;
-    public static String zip;
-    public static List<Offer> offers;
+    public String phone;
+    public String fax;
+    public String companyEmail;
+    public String street;
+    public String city;
+    public String zip;
+    public List<Offer> offers;
 
-    public Employer(String e, String p){
-        super(e, p);
+    public Employer(){
+        super();
         this.offers = new ArrayList<Offer>();
     }
 }
