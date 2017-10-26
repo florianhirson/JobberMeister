@@ -5,17 +5,17 @@
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/textViewPhone"
+        android:id="@+id/textViewMobile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Telephone"
+        android:text="Mobile"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/editTextMobile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Entrez votre numéro de téléphone"
+        android:hint="Entrez votre numéro de mobile"
         android:ems="10"
         android:inputType="phone" />
 

@@ -40,6 +40,7 @@ public class RegisterDescriptionActivity extends AppCompatActivity {
                     AlertDialog a = b.create();
                     a.show();
                 } else {
+                    ((Applicant) Model.user).description = description.getText().toString();
                     Intent homepage = new Intent(RegisterDescriptionActivity.this, RegisterCriteriaActivity.class);
                     startActivity(homepage);
                 }

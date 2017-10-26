@@ -35,14 +35,14 @@
         android:inputType="phone" />
 
     <TextView
-        android:id="@+id/textViewEmail"
+        android:id="@+id/textViewCompanyEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Email"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/editTextCompanyEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Entrez l'adresse email de votre société"

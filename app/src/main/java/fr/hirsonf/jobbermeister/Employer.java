@@ -11,9 +11,7 @@ public class Employer extends User {
     public String phone;
     public String fax;
     public String companyEmail;
-    public String street;
-    public String city;
-    public String zip;
+    public String position;
     public List<Offer> offers;
 
     public Employer(){
