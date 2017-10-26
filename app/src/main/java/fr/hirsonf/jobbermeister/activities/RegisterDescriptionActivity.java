@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,6 +51,7 @@ public class RegisterDescriptionActivity extends AppCompatActivity {
                     Intent homepage = new Intent(RegisterDescriptionActivity.this, RegisterCriteriaActivity.class);
                     homepage.putExtra("applicant", applicant);
                     System.out.println(applicant);
+                    Log.v("My Application", applicant.toString());
                     startActivity(homepage);
                 }
             }

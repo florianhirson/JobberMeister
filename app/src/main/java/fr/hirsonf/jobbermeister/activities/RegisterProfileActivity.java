@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -79,6 +80,7 @@ public class RegisterProfileActivity extends AppCompatActivity {
                         Intent homepage = new Intent(RegisterProfileActivity.this, RegisterContactApplicantActivity.class);
                         homepage.putExtra("applicant", applicant);
                         System.out.println(applicant);
+                        Log.v("My Application", applicant.toString());
                         startActivity(homepage);
                     } else if (selectedId == R.id.r_employer) {
                         Employer employer = new Employer(user);
@@ -86,6 +88,7 @@ public class RegisterProfileActivity extends AppCompatActivity {
                         Intent homepage = new Intent(RegisterProfileActivity.this, RegisterContactEmployerActivity.class);
                         homepage.putExtra("employer", employer);
                         System.out.println(employer);
+                        Log.v("My Application", employer.toString());
                         startActivity(homepage);
                     }
 

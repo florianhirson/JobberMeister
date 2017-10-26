@@ -3,6 +3,7 @@ package fr.hirsonf.jobbermeister.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -53,6 +54,7 @@ public class RegisterCriteriaActivity extends AppCompatActivity {
                 // startActivity(homepage);
                 Toast.makeText(RegisterCriteriaActivity.this, (applicant).toString(), Toast.LENGTH_LONG).show();
                 System.out.println(applicant);
+                Log.v("My Application", applicant.toString());
             }
         });
     }
