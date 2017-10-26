@@ -23,14 +23,14 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 @Layout(R.layout.ad_card_view)
 public class AdCard {
 
-    @View(R.id.profileImageView)
-    private ImageView profileImageView;
+    @View(R.id.imageViewLogo)
+    private ImageView imageViewLogo;
 
-    @View(R.id.textViewOfferTitle)
-    private TextView textViewOfferTitle;
+    @View(R.id.textViewTitle)
+    private TextView textViewTitle;
 
-    @View(R.id.textViewOfferCompanyName)
-    private TextView textViewOfferCompanyName;
+    @View(R.id.textViewCompanyName)
+    private TextView textViewCompanyName;
 
     private Profile mProfile;
     private Context mContext;
@@ -44,15 +44,15 @@ public class AdCard {
 
     @Resolve
     private void onResolved(){
-        Glide.with(mContext).load(mProfile.getImageUrl()).into(profileImageView);
-        textViewOfferTitle.setText(mProfile.getName() + ", " + mProfile.getDomain());
-        textViewOfferCompanyName.setText(mProfile.getLocation());
+        Glide.with(mContext).load(mProfile.getImageUrl()).into(imageViewLogo);
+        textViewTitle.setText(mProfile.getName() + ", " + mProfile.getDomain());
+        textViewCompanyName.setText(mProfile.getLocation());
     }
 
     @SwipeOut
     private void onSwipedOut(){
         Log.d("EVENT", "onSwipedOut");
-        mSwipeView.addView(this);
+        // mSwipeView.addView(this);
     }
 
     @SwipeCancelState
