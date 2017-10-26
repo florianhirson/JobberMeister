@@ -37,8 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         bypass = findViewById(R.id.b_bypass);
         eLogin = findViewById(R.id.editTextEmail);
         ePassword = findViewById(R.id.editTextPassword);
-        RequestQueue queue = MySingleton.getInstance(this.getApplicationContext()).
-                getRequestQueue();
+
 
 
         register.setOnClickListener(new View.OnClickListener() {

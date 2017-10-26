@@ -14,8 +14,8 @@ import java.util.Date;
 
 import fr.hirsonf.jobbermeister.Applicant;
 import fr.hirsonf.jobbermeister.Employer;
-import fr.hirsonf.jobbermeister.Model;
 import fr.hirsonf.jobbermeister.R;
+import fr.hirsonf.jobbermeister.User;
 
 /**
  * Created by flohi on 25/10/2017.
@@ -31,17 +31,16 @@ public class RegisterProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_profile);
 
-        b = (Button) findViewById(R.id.b_next);
-        radioGroup = (RadioGroup) findViewById(R.id.r_group);
-        lastName = (EditText) findViewById(R.id.editTextLastName);
-        firstName = (EditText) findViewById(R.id.editTextFirstName);
-        birthDate = (EditText) findViewById(R.id.editTextBirthDate);
+        b =  findViewById(R.id.b_next);
+        radioGroup =  findViewById(R.id.r_group);
+        lastName =  findViewById(R.id.editTextLastName);
+        firstName =  findViewById(R.id.editTextFirstName);
+        birthDate =  findViewById(R.id.editTextBirthDate);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int selectedId = radioGroup.getCheckedRadioButtonId();
-                System.out.println("test : "+ radioGroup.getCheckedRadioButtonId());
 
                 String c = checkBirthDate(birthDate.getText().toString());
 
@@ -69,23 +68,27 @@ public class RegisterProfileActivity extends AppCompatActivity {
                     AlertDialog a = b.create();
                     a.show();
                 } else {
-                    String email = Model.user.email;
-                    String password = Model.user.password;
+                    Intent i = getIntent();
+                    User user = (User)i.getSerializableExtra("user");
+                    user.setLastName(lastName.getText().toString());
+                    user.setFirstName(firstName.getText().toString());
+                    user.setBirthDate(new Date(birthDate.getText().toString()));
+
                     if(selectedId == R.id.r_applicant) {
-                        Model.user = new Applicant();
+                        Applicant applicant = new Applicant(user);
                         Intent homepage = new Intent(RegisterProfileActivity.this, RegisterContactApplicantActivity.class);
+                        homepage.putExtra("applicant", applicant);
+                        System.out.println(applicant);
                         startActivity(homepage);
                     } else if (selectedId == R.id.r_employer) {
-                        Model.user = new Employer();
+                        Employer employer = new Employer(user);
                         System.out.println("Employer !");
                         Intent homepage = new Intent(RegisterProfileActivity.this, RegisterContactEmployerActivity.class);
+                        homepage.putExtra("employer", employer);
+                        System.out.println(employer);
                         startActivity(homepage);
                     }
-                    Model.user.email = email;
-                    Model.user.password = password;
-                    Model.user.lastName = lastName.getText().toString();
-                    Model.user.firstName = firstName.getText().toString();
-                    Model.user.birthDate = new Date(birthDate.getText().toString());
+
                 }
             }
         });

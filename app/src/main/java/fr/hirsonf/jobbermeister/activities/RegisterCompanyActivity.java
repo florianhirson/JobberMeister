@@ -1,6 +1,7 @@
 package fr.hirsonf.jobbermeister.activities;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import fr.hirsonf.jobbermeister.Employer;
-import fr.hirsonf.jobbermeister.Model;
 import fr.hirsonf.jobbermeister.R;
 
 /**
@@ -20,14 +20,17 @@ public class RegisterCompanyActivity extends AppCompatActivity {
 
     Button b;
     EditText companyName, position;
+    Intent i = getIntent();
+    Employer employer = (Employer)i.getSerializableExtra("employer");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_company);
-        b = (Button) findViewById(R.id.button);
-        companyName = (EditText) findViewById(R.id.editTextCompanyName);
-        position = (EditText) findViewById(R.id.editTextPosition);
+        b =  findViewById(R.id.button);
+        companyName =  findViewById(R.id.editTextCompanyName);
+        position =  findViewById(R.id.editTextPosition);
+
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,8 +47,10 @@ public class RegisterCompanyActivity extends AppCompatActivity {
                     AlertDialog a = b.create();
                     a.show();
                 } else {
-                    ((Employer) Model.user).companyName = companyName.getText().toString();
-                    ((Employer) Model.user).position = position.getText().toString();
+                    employer.setCompanyName(companyName.getText().toString());
+                    employer.setPosition(position.getText().toString());
+                    System.out.println(employer);
+
                     // Intent homepage = new Intent(RegisterCompanyActivity.this, CreateOfferActivity.class);
                     // startActivity(homepage);
                 }

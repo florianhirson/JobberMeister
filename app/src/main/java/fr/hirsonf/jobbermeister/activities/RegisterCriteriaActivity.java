@@ -1,5 +1,6 @@
 package fr.hirsonf.jobbermeister.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,7 +10,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import fr.hirsonf.jobbermeister.Applicant;
-import fr.hirsonf.jobbermeister.Model;
 import fr.hirsonf.jobbermeister.R;
 
 /**
@@ -24,30 +24,35 @@ public class RegisterCriteriaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_criteria);
 
-        domainSought = (Spinner) findViewById(R.id.spinnerDomainSought);
+        domainSought =  findViewById(R.id.spinnerDomainSought);
         ArrayAdapter<String> spDomainArrayAdapter = new ArrayAdapter<>
                 (this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.domains)); //selected item will look like a spinner set from XML
         spDomainArrayAdapter.setDropDownViewResource(android.R.layout
                 .simple_spinner_dropdown_item);
         domainSought.setAdapter(spDomainArrayAdapter);
 
-        typeOfContractSought = (Spinner) findViewById(R.id.spinnerTypeOfContractSought);
+        typeOfContractSought =  findViewById(R.id.spinnerTypeOfContractSought);
         ArrayAdapter<String> spTypeArrayAdapter = new ArrayAdapter<>
                 (this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.contracts)); //selected item will look like a spinner set from XML
         spTypeArrayAdapter.setDropDownViewResource(android.R.layout
                 .simple_spinner_dropdown_item);
         typeOfContractSought.setAdapter(spTypeArrayAdapter);
 
-        Button b = (Button) findViewById(R.id.b_next);
+        Button b = findViewById(R.id.b_next);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((Applicant) Model.user).domainSought = domainSought.getSelectedItem().toString();
-                ((Applicant) Model.user).typeOfContractSought = typeOfContractSought.getSelectedItem().toString();
+                Intent i = getIntent();
+                Applicant applicant = (Applicant)i.getSerializableExtra("applicant");
+
+               applicant.setDomainSought(domainSought.getSelectedItem().toString());
+                applicant.setTypeOfContractSought(typeOfContractSought.getSelectedItem().toString());
+
                 // Intent homepage = new Intent(RegisterCriteriaActivity.this, RegisterDescriptionActivity.class);
                 // startActivity(homepage);
-                Toast.makeText(RegisterCriteriaActivity.this, ((Applicant) Model.user).toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(RegisterCriteriaActivity.this, (applicant).toString(), Toast.LENGTH_LONG).show();
+                System.out.println(applicant);
             }
         });
     }

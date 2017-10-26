@@ -2,6 +2,7 @@ package fr.hirsonf.jobbermeister.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.ColorSpace;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,13 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import fr.hirsonf.jobbermeister.Model;
 import fr.hirsonf.jobbermeister.R;
 import fr.hirsonf.jobbermeister.User;
 
 public class RegisterCredentialsActivity extends AppCompatActivity {
     Button b;
-    EditText email;
+    EditText login;
     TextInputEditText password;
 
     @Override
@@ -24,14 +24,14 @@ public class RegisterCredentialsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_credentials);
 
-        b = (Button) findViewById(R.id.b_next);
-        email = (EditText) findViewById(R.id.editTextEmail);
-        password = (TextInputEditText) findViewById(R.id.editTextPassword);
+        b =  findViewById(R.id.b_next);
+        login =  findViewById(R.id.editTextLogin);
+        password =  findViewById(R.id.editTextPassword);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(email.getText().toString().trim().equals("") || password.getText().toString().trim().equals("")) {
+                if(login.getText().toString().trim().equals("") || password.getText().toString().trim().equals("")) {
                     AlertDialog.Builder b = new AlertDialog.Builder(RegisterCredentialsActivity.this);
                     b.setMessage("Veuillez completer tous les champs !");
                     b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -42,22 +42,14 @@ public class RegisterCredentialsActivity extends AppCompatActivity {
                     });
                     AlertDialog a = b.create();
                     a.show();
-                } else if (Model.checkEmail(email.getText()) == false) {
-                    AlertDialog.Builder b = new AlertDialog.Builder(RegisterCredentialsActivity.this);
-                    b.setMessage("Le format de l'adresse email est invalide !");
-                    b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
+                }  else {
+                    User user = new User();
+                    user.setLogin(login.getText().toString());
+                    user.setPassword(password.getText().toString());
 
-                        }
-                    });
-                    AlertDialog a = b.create();
-                    a.show();
-                } else {
-                    Model.user = new User();
-                    Model.user.email = email.getText().toString();
-                    Model.user.password = password.getText().toString();
                     Intent homepage = new Intent(RegisterCredentialsActivity.this, RegisterProfileActivity.class);
+                    homepage.putExtra("user", user);
+                    System.out.println(user);
                     startActivity(homepage);
                 }
 

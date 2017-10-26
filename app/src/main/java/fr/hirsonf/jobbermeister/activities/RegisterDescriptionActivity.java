@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import fr.hirsonf.jobbermeister.Applicant;
-import fr.hirsonf.jobbermeister.Model;
 import fr.hirsonf.jobbermeister.R;
 
 /**
@@ -26,8 +25,8 @@ public class RegisterDescriptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_description);
 
-        Button b = (Button) findViewById(R.id.b_next);
-        description = (EditText) findViewById(R.id.t_description);
+        Button b =  findViewById(R.id.b_next);
+        description =  findViewById(R.id.t_description);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,8 +43,13 @@ public class RegisterDescriptionActivity extends AppCompatActivity {
                     AlertDialog a = b.create();
                     a.show();
                 } else {
-                    ((Applicant) Model.user).description = description.getText().toString();
+                    Intent i = getIntent();
+                    Applicant applicant = (Applicant)i.getSerializableExtra("applicant");
+                    applicant.setDescription(description.getText().toString());
+
                     Intent homepage = new Intent(RegisterDescriptionActivity.this, RegisterCriteriaActivity.class);
+                    homepage.putExtra("applicant", applicant);
+                    System.out.println(applicant);
                     startActivity(homepage);
                 }
             }

@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import fr.hirsonf.jobbermeister.Applicant;
-import fr.hirsonf.jobbermeister.Model;
 import fr.hirsonf.jobbermeister.R;
 
 /**
@@ -26,11 +25,11 @@ public class RegisterContactApplicantActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_contact_applicant);
-        b = (Button) findViewById(R.id.button);
-        mobile = (EditText) findViewById(R.id.editTextMobile);
-        street = (EditText) findViewById(R.id.editTextStreet);
-        city = (EditText) findViewById(R.id.editTextCity);
-        zip = (EditText) findViewById(R.id.editTextZIP);
+        b = findViewById(R.id.button);
+        mobile = findViewById(R.id.editTextMobile);
+        street =  findViewById(R.id.editTextStreet);
+        city = findViewById(R.id.editTextCity);
+        zip = findViewById(R.id.editTextZIP);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,11 +47,17 @@ public class RegisterContactApplicantActivity extends AppCompatActivity {
                     AlertDialog a = b.create();
                     a.show();
                 } else {
-                    ((Applicant) Model.user).mobile = mobile.getText().toString();
-                    Model.user.street = street.getText().toString();
-                    Model.user.city = city.getText().toString();
-                    Model.user.zip = zip.getText().toString();
+                    Intent i = getIntent();
+                    Applicant applicant = (Applicant)i.getSerializableExtra("applicant");
+
+                    applicant.setMobile(mobile.getText().toString());
+                    applicant.setStreet(street.getText().toString());
+                    applicant.setCity(city.getText().toString());
+                    applicant.setZip(zip.getText().toString());
+
                     Intent homepage = new Intent(RegisterContactApplicantActivity.this, RegisterDescriptionActivity.class);
+                    homepage.putExtra("applicant", applicant);
+                    System.out.println(applicant);
                     startActivity(homepage);
                 }
             }

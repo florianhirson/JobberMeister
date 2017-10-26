@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import fr.hirsonf.jobbermeister.Employer;
-import fr.hirsonf.jobbermeister.Model;
 import fr.hirsonf.jobbermeister.R;
 
 /**
@@ -26,17 +25,20 @@ public class RegisterContactEmployerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_contact_employer);
-        b = (Button) findViewById(R.id.button);
-        phone = (EditText) findViewById(R.id.editTextPhone);
-        fax = (EditText) findViewById(R.id.editTextFax);
-        companyEmail = (EditText) findViewById(R.id.editTextCompanyEmail);
-        street = (EditText) findViewById(R.id.editTextStreet);
-        city = (EditText) findViewById(R.id.editTextCity);
-        zip = (EditText) findViewById(R.id.editTextZIP);
+        b =  findViewById(R.id.button);
+        phone = findViewById(R.id.editTextPhone);
+        fax =  findViewById(R.id.editTextFax);
+        companyEmail = findViewById(R.id.editTextCompanyEmail);
+        street = findViewById(R.id.editTextStreet);
+        city =  findViewById(R.id.editTextCity);
+        zip =  findViewById(R.id.editTextZIP);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = getIntent();
+                Employer employer = (Employer)i.getSerializableExtra("employer");
+
                 if(phone.getText().toString().trim().equals("") || fax.getText().toString().trim().equals("") || street.getText().toString().trim().equals("")
                         || city.getText().toString().trim().equals("") || zip.getText().toString().trim().equals("")) {
                     AlertDialog.Builder b = new AlertDialog.Builder(RegisterContactEmployerActivity.this);
@@ -49,7 +51,7 @@ public class RegisterContactEmployerActivity extends AppCompatActivity {
                     });
                     AlertDialog a = b.create();
                     a.show();
-                } else if (Model.checkEmail(companyEmail.getText()) == false) {
+                } else if (employer.checkEmail(companyEmail.getText()) == false) {
                     AlertDialog.Builder b = new AlertDialog.Builder(RegisterContactEmployerActivity.this);
                     b.setMessage("Le format de l'adresse email est invalide !");
                     b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -61,12 +63,17 @@ public class RegisterContactEmployerActivity extends AppCompatActivity {
                     AlertDialog a = b.create();
                     a.show();
                 } else {
-                    ((Employer) Model.user).phone = phone.getText().toString();
-                    ((Employer) Model.user).fax = fax.getText().toString();
-                    Model.user.street = street.getText().toString();
-                    Model.user.city = city.getText().toString();
-                    Model.user.zip = zip.getText().toString();
+
+
+                    employer.setPhone(phone.getText().toString());
+                    employer.setFax(fax.getText().toString());
+                    employer.setStreet(street.getText().toString());
+                    employer.setCity(city.getText().toString());
+                    employer.setZip(zip.getText().toString());
+
                     Intent homepage = new Intent(RegisterContactEmployerActivity.this, RegisterCompanyActivity.class);
+                    homepage.putExtra("employer", employer);
+                    System.out.println(employer);
                     startActivity(homepage);
                 }
             }
