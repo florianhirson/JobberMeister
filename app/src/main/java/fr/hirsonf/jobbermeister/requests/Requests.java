@@ -6,6 +6,7 @@ package fr.hirsonf.jobbermeister.requests;
         import android.content.Context;
         import android.content.DialogInterface;
         import android.content.Intent;
+        import android.support.design.widget.Snackbar;
         import android.support.v7.app.AlertDialog;
         import android.util.Log;
         import android.widget.Toast;
@@ -15,14 +16,21 @@ package fr.hirsonf.jobbermeister.requests;
         import com.android.volley.NoConnectionError;
         import com.android.volley.ParseError;
         import com.android.volley.Request;
+        import com.android.volley.RequestQueue;
         import com.android.volley.Response;
         import com.android.volley.ServerError;
         import com.android.volley.TimeoutError;
         import com.android.volley.VolleyError;
+        import com.android.volley.toolbox.JsonArrayRequest;
         import com.android.volley.toolbox.JsonObjectRequest;
+        import com.android.volley.toolbox.Volley;
 
+        import org.json.JSONArray;
+        import org.json.JSONException;
         import org.json.JSONObject;
 
+        import java.io.IOException;
+        import java.io.OutputStreamWriter;
         import java.net.HttpURLConnection;
 
         import fr.hirsonf.jobbermeister.activities.BrowseOffersActivity;
@@ -36,18 +44,32 @@ package fr.hirsonf.jobbermeister.requests;
  */
 
 public class Requests {
-    private final String BASE_URL = "http://10.19.0.165:8080/jobber/app/";
+    private final String BASE_URL = "http://10.19.0.165:8080/jobber/";
+    public static RequestQueue requestQueue;
     String url;
+
+    public JSONArray getArray() {
+        return array;
+    }
+
+    public void setArray(JSONArray array) {
+        this.array = array;
+    }
+
+    private JSONArray array;
     public Requests () {}
 
     public void doLoginRequest(final Context context, final String login, final String mdp) {
-        url = BASE_URL + login + "/" + mdp;
+        url = BASE_URL + "app/" + login + "/" + mdp;
+
+        requestQueue = Volley.newRequestQueue(context);
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
+                        System.out.println("Réponse : " +response);
                         Intent homepage = new Intent(context, BrowseOffersActivity.class);
                         context.startActivity(homepage);
                     }
@@ -86,16 +108,14 @@ public class Requests {
                             System.out.println("url : " + url);
                             System.out.println(error);
                         }
-
                     }
                 });
-
-        // Access the RequestQueue through your singleton class.
-        MySingleton.getInstance(context).addToRequestQueue(jsObjRequest);
+        requestQueue.add(jsObjRequest);
     }
 
     public void doLoginExistRequest(final Context context, final User user) {
         url = BASE_URL + user.getLogin();
+        requestQueue = Volley.newRequestQueue(context);
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -162,8 +182,39 @@ public class Requests {
                     }
                 });
 
-        // Access the RequestQueue through your singleton class.
-        MySingleton.getInstance(context).addToRequestQueue(jsObjRequest);
+        requestQueue.add(jsObjRequest);
+    }
+
+    public void doListOffersRequest(Context context) {
+        url = BASE_URL + "offer/";
+        System.out.println("Context : " + context);
+        System.out.println("Url : " + url);
+        requestQueue = Volley.newRequestQueue(context);
+
+        // Initialize a new JsonArrayRequest instance
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                url,
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        System.out.println(response.toString());
+                        array = response;
+                    }
+                },
+                new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error){
+                        System.out.println(error.networkResponse.data.toString());
+                    }
+                }
+
+        );
+
+        // Add JsonArrayRequest to the RequestQueue
+        requestQueue.add(jsonArrayRequest);
+        System.out.println("json array request : " + jsonArrayRequest);
     }
 
 }

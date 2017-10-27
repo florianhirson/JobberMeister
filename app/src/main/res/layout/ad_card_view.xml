@@ -14,6 +14,14 @@
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp">
 
+
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:scaleType="centerCrop" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,164 +30,91 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/grey">
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/imageViewLogo"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="10dp"
-                    android:scaleType="centerCrop" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/textViewLibelleLabel"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:text="Libelle : "
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/textViewTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="24dp"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/textViewCompanyLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="chez "
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:id="@+id/textViewCompany"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16dp" />
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/textViewLocationLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="à "
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16dp"/>
-
-                    <TextView
-                        android:id="@+id/textViewLocation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16dp" />
-                    </LinearLayout>
-
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/textViewLibelle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="10dp">
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textViewDescriptionLabel"
+                    android:id="@+id/textViewEmployerLoginLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Description :"
+                    android:text="Login de l'employeur : "
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="16dp"
+                    android:textSize="24dp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textViewDescription"
+                    android:id="@+id/textViewEmployerLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="16dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textViewStartDateLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Date de début : "
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textViewStartDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textViewWageLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Salaire : "
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textViewWage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16dp" />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="bottom">
-
-                    <TextView
-                        android:id="@+id/textViewIDLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ID : "
-                        android:textColor="@color/grey"
-                        android:textSize="16dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textViewID"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/grey"
-                        android:textSize="16dp" />
-                </LinearLayout>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewTypeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Type :  "
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewIdLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Id de l'annonce : "
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

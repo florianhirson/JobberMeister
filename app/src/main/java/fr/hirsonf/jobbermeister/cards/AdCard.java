@@ -29,26 +29,17 @@ public class AdCard {
     @View(R.id.imageViewLogo)
     private ImageView imageViewLogo;
 
-    @View(R.id.textViewTitle)
-    private TextView textViewTitle;
+    @View(R.id.textViewLibelle)
+    private TextView textViewLibelle;
 
-    @View(R.id.textViewCompany)
-    private TextView textViewCompany;
+    @View(R.id.textViewEmployerLogin)
+    private TextView textViewEmployerLogin;
 
-    @View(R.id.textViewLocation)
-    private TextView textViewLocation;
+    @View(R.id.textViewId)
+    private TextView textViewId;
 
-    @View(R.id.textViewDescription)
-    private TextView textViewDescription;
-
-    @View(R.id.textViewStartDate)
-    private TextView textViewStartDate;
-
-    @View(R.id.textViewWage)
-    private TextView textViewWage;
-
-    @View(R.id.textViewID)
-    private TextView textViewID;
+    @View(R.id.textViewType)
+    private TextView textViewtype;
 
 
     private Offer offer;
@@ -64,13 +55,10 @@ public class AdCard {
     @Resolve
     private void onResolved() {
         Glide.with(context).load(offer.logoURL).into(imageViewLogo);
-        textViewTitle.setText(offer.title);
-        textViewCompany.setText(offer.company);
-        textViewLocation.setText(offer.location);
-        textViewDescription.setText(offer.description);
-        textViewStartDate.setText(offer.startDate.toString());
-        textViewWage.setText(offer.wage.toString());
-        textViewID.setText(offer.id.toString());
+        textViewLibelle.setText(offer.libelle);
+        textViewEmployerLogin.setText(offer.login);
+        textViewtype.setText(offer.type);
+        textViewId.setText(offer.id.toString());
     }
 
     @SwipeOut

@@ -9,10 +9,13 @@ import android.view.Gravity;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 
+import org.json.JSONArray;
+
 import fr.hirsonf.jobbermeister.cards.AdCard;
 import fr.hirsonf.jobbermeister.model.Offer;
 import fr.hirsonf.jobbermeister.R;
 import fr.hirsonf.jobbermeister.cards.Utils;
+import fr.hirsonf.jobbermeister.requests.Requests;
 
 /**
  * Created by flohi on 26/10/2017.
@@ -28,7 +31,7 @@ public class BrowseOffersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browse_offers);
 
-        mSwipeView = (SwipePlaceHolderView)findViewById(R.id.swipeView);
+        mSwipeView = findViewById(R.id.swipeView);
         mContext = getApplicationContext();
 
         int bottomMargin = Utils.dpToPx(160);
@@ -44,7 +47,7 @@ public class BrowseOffersActivity extends AppCompatActivity {
                         .setSwipeInMsgLayoutId(R.layout.ad_swipe_in_msg_view)
                         .setSwipeOutMsgLayoutId(R.layout.ad_swipe_out_msg_view));
 
-
+        System.out.println("Profiles : " + Utils.loadProfiles(BrowseOffersActivity.this));
         for(Offer offer : Utils.loadProfiles(this.getApplicationContext())){
             mSwipeView.addView(new AdCard(mContext, offer, mSwipeView));
         }
