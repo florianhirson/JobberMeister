@@ -54,8 +54,6 @@ public class LoginActivity extends AppCompatActivity {
                     String pwd = ePassword.getText().toString();
                     Requests r = new Requests();
                     r.doLoginRequest(LoginActivity.this, mail, pwd);
-
-
                 }
             }
         });

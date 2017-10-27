@@ -32,6 +32,7 @@ package fr.hirsonf.jobbermeister.requests;
         import java.io.IOException;
         import java.io.OutputStreamWriter;
         import java.net.HttpURLConnection;
+        import java.util.ArrayList;
 
         import fr.hirsonf.jobbermeister.activities.BrowseOffersActivity;
         import fr.hirsonf.jobbermeister.activities.LoginActivity;
@@ -209,12 +210,33 @@ public class Requests {
                         System.out.println(error.networkResponse.data.toString());
                     }
                 }
-
         );
 
         // Add JsonArrayRequest to the RequestQueue
         requestQueue.add(jsonArrayRequest);
         System.out.println("json array request : " + jsonArrayRequest);
+    }
+
+    public void fetch(Context context) {
+        System.out.println("Fetch ! ");
+        requestQueue = Volley.newRequestQueue(context);
+        System.out.println("Fetch 2! ");
+        JsonArrayRequest request = new JsonArrayRequest( url = BASE_URL + "offer/",
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray jsonArray) {
+                        System.out.println("Json Array 1 : " + jsonArray);
+                        array = jsonArray;
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        System.out.println("Unable to fetch data: " + volleyError.getMessage());
+                    }
+                });
+
+        requestQueue.add(request);
     }
 
 }

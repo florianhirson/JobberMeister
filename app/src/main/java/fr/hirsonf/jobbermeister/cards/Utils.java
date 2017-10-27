@@ -45,19 +45,16 @@ import fr.hirsonf.jobbermeister.requests.Requests;
 
 public class Utils {
 
-    public static Context c;
     private static final String TAG = "Utils";
 
     public static List<Offer> loadProfiles(Context context) {
+        Requests r = new Requests();
+        r.fetch(context);
+        JSONArray array = r.getArray();
+        System.out.println("Array 2: " + array);
         try {
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
-            c = context;
-
-            Requests r = new Requests();
-            r.doListOffersRequest(context);
-
-            JSONArray array = r.getArray();
             System.out.println("Array : " + array);
             List<Offer> offersList = new ArrayList<Offer>();
             for (int i = 0; i < array.length(); i++) {
