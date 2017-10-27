@@ -85,7 +85,7 @@ public class Employer extends User implements Serializable {
     @Override
     public String toString() {
         return "Employer{" +
-                "companyName='" + companyName + '\'' +
+                "company='" + companyName + '\'' +
 
                 ", position='" + position + '\'' +
                 ", phone='" + phone + '\'' +

@@ -10,7 +10,11 @@ import java.util.Date;
  */
 
 public class Offer {
-    @SerializedName("name")
+    @SerializedName("id")
+    @Expose
+    public Integer id;
+
+    @SerializedName("title")
     @Expose
     public String title;
 
@@ -24,15 +28,23 @@ public class Offer {
     @Expose
     public String location;
 
-    public String companyName;
+    @SerializedName("company")
+    @Expose
+    public String company;
 
+    @SerializedName("description")
+    @Expose
     public String description;
 
-    public Double wage;
+    @SerializedName("wage")
+    @Expose
+    public String wage;
 
-    public Date startDate;
+    @SerializedName("startDate")
+    @Expose
+    public String startDate;
 
-    @SerializedName("url")
+    @SerializedName("logoURL")
     @Expose
     public String logoURL;
 
@@ -44,7 +56,7 @@ public class Offer {
                 ", domain='" + domain + '\'' +
                 ", typeOfContract='" + typeOfContract + '\'' +
                 ", location='" + location + '\'' +
-                ", companyName='" + companyName + '\'' +
+                ", company='" + company + '\'' +
                 ", description='" + description + '\'' +
                 ", wage=" + wage +
                 ", startDate=" + startDate +

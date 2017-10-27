@@ -32,9 +32,8 @@ public class AdCard {
     @View(R.id.textViewTitle)
     private TextView textViewTitle;
 
-    @View(R.id.textViewCompanyName)
-    private TextView textViewCompanyName;
-
+    @View(R.id.textViewCompany)
+    private TextView textViewCompany;
 
     @View(R.id.textViewLocation)
     private TextView textViewLocation;
@@ -48,32 +47,36 @@ public class AdCard {
     @View(R.id.textViewWage)
     private TextView textViewWage;
 
+    @View(R.id.textViewID)
+    private TextView textViewID;
 
-    private Offer mOffer;
-    private Context mContext;
-    private SwipePlaceHolderView mSwipeView;
+
+    private Offer offer;
+    private Context context;
+    private SwipePlaceHolderView swipeView;
 
     public AdCard(Context context, Offer offer, SwipePlaceHolderView swipeView) {
-        mContext = context;
-        mOffer = offer;
-        mSwipeView = swipeView;
+        this.context = context;
+        this.offer = offer;
+        this.swipeView = swipeView;
     }
 
     @Resolve
     private void onResolved() {
-        Glide.with(mContext).load(mOffer.logoURL).into(imageViewLogo);
-        textViewTitle.setText(mOffer.title);
-        textViewCompanyName.setText(mOffer.companyName);
-        textViewLocation.setText(mOffer.location);
-        textViewDescription.setText(mOffer.description);
-        textViewStartDate.setText(mOffer.startDate.toString());
-        textViewWage.setText(mOffer.wage.toString());
+        Glide.with(context).load(offer.logoURL).into(imageViewLogo);
+        textViewTitle.setText(offer.title);
+        textViewCompany.setText(offer.company);
+        textViewLocation.setText(offer.location);
+        textViewDescription.setText(offer.description);
+        textViewStartDate.setText(offer.startDate.toString());
+        textViewWage.setText(offer.wage.toString());
+        textViewID.setText(offer.id.toString());
     }
 
     @SwipeOut
     private void onSwipedOut() {
         Log.d("EVENT", "onSwipedOut");
-        // mSwipeView.addView(this);
+        // swipeView.addView(this);
     }
 
     @SwipeCancelState

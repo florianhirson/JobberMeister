@@ -19,7 +19,7 @@ class Experience {
     public String toString() {
         return "Experience{" +
                 "domain='" + domain + '\'' +
-                ", companyName='" + company + '\'' +
+                ", company='" + company + '\'' +
                 ", duration=" + duration +
                 '}';
     }
