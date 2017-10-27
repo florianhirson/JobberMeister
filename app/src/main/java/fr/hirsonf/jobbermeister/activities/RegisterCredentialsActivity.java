@@ -13,6 +13,7 @@ import android.widget.EditText;
 
 import fr.hirsonf.jobbermeister.R;
 import fr.hirsonf.jobbermeister.model.User;
+import fr.hirsonf.jobbermeister.requests.Requests;
 
 public class RegisterCredentialsActivity extends AppCompatActivity {
     Button b;
@@ -47,10 +48,13 @@ public class RegisterCredentialsActivity extends AppCompatActivity {
                     user.setLogin(login.getText().toString());
                     user.setPassword(password.getText().toString());
 
+                    Requests r = new Requests();
+                    r.doLoginExistRequest(RegisterCredentialsActivity.this, user);
+
                     Intent homepage = new Intent(RegisterCredentialsActivity.this, RegisterProfileActivity.class);
                     homepage.putExtra("user", user);
                     Log.e("My Application", user.toString());
-                    startActivity(homepage);
+                    //startActivity(homepage);
                 }
 
             }
