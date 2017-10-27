@@ -20,7 +20,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.hirsonf.jobbermeister.cards.Offer;
+import fr.hirsonf.jobbermeister.model.Offer;
 
 /**
  * Created by flohi on 26/10/2017.

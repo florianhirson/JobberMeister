@@ -10,7 +10,7 @@ import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 
 import fr.hirsonf.jobbermeister.cards.AdCard;
-import fr.hirsonf.jobbermeister.cards.Offer;
+import fr.hirsonf.jobbermeister.model.Offer;
 import fr.hirsonf.jobbermeister.R;
 import fr.hirsonf.jobbermeister.cards.Utils;
 

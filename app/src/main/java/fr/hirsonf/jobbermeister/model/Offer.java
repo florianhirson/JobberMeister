@@ -1,4 +1,4 @@
-package fr.hirsonf.jobbermeister.cards;
+package fr.hirsonf.jobbermeister.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

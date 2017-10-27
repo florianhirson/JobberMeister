@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.hirsonf.jobbermeister.cards.Offer;
 
 /**
  * Created by Rémi on 25-Oct-17.

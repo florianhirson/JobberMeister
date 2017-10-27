@@ -17,6 +17,7 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 
 import fr.hirsonf.jobbermeister.R;
+import fr.hirsonf.jobbermeister.model.Offer;
 
 /**
  * Created by flohi on 26/10/2017.
