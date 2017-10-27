@@ -2,9 +2,7 @@ package fr.hirsonf.jobbermeister.requests;
 
 /**
  * Created by flohi on 27/10/2017.
- */
-
-
+ * */
         import android.content.Context;
         import android.content.Intent;
         import android.widget.Toast;
@@ -86,5 +84,7 @@ public class Requests {
         // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(context).addToRequestQueue(jsObjRequest);
     }
+
+
 
 }
