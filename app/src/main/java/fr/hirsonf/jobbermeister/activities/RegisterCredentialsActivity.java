@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
 import fr.hirsonf.jobbermeister.R;
 import fr.hirsonf.jobbermeister.model.User;
 import fr.hirsonf.jobbermeister.requests.Requests;
@@ -49,7 +52,8 @@ public class RegisterCredentialsActivity extends AppCompatActivity {
                     user.setPassword(password.getText().toString());
 
                     Requests r = new Requests();
-                    r.doLoginExistRequest(RegisterCredentialsActivity.this, user);
+                    RequestQueue requestQueue = Volley.newRequestQueue(RegisterCredentialsActivity.this);
+                    r.doLoginExistRequest(RegisterCredentialsActivity.this, user, requestQueue);
 
                     Intent homepage = new Intent(RegisterCredentialsActivity.this, RegisterProfileActivity.class);
                     homepage.putExtra("user", user);

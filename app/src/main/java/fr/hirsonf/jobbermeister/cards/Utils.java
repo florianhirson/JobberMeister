@@ -47,10 +47,9 @@ public class Utils {
 
     private static final String TAG = "Utils";
 
-    public static List<Offer> loadProfiles(Context context) {
-        Requests r = new Requests();
-        r.fetch(context);
-        JSONArray array = r.getArray();
+    public static List<Offer> loadProfiles(Context context, JSONArray array) {
+
+
         System.out.println("Array 2: " + array);
         try {
             GsonBuilder builder = new GsonBuilder();

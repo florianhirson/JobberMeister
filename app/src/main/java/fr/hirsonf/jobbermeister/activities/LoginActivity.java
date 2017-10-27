@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
 import fr.hirsonf.jobbermeister.R;
 import fr.hirsonf.jobbermeister.requests.Requests;
 
@@ -53,7 +56,8 @@ public class LoginActivity extends AppCompatActivity {
                     String mail = eLogin.getText().toString();
                     String pwd = ePassword.getText().toString();
                     Requests r = new Requests();
-                    r.doLoginRequest(LoginActivity.this, mail, pwd);
+                    RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
+                    r.doLoginRequest(LoginActivity.this, mail, pwd, requestQueue);
                 }
             }
         });

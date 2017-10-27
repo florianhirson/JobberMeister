@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 
@@ -47,10 +49,17 @@ public class BrowseOffersActivity extends AppCompatActivity {
                         .setSwipeInMsgLayoutId(R.layout.ad_swipe_in_msg_view)
                         .setSwipeOutMsgLayoutId(R.layout.ad_swipe_out_msg_view));
 
-        System.out.println("Profiles : " + Utils.loadProfiles(BrowseOffersActivity.this));
-        for(Offer offer : Utils.loadProfiles(this.getApplicationContext())){
-            mSwipeView.addView(new AdCard(mContext, offer, mSwipeView));
+        Requests r = new Requests();
+        RequestQueue requestQueue = Volley.newRequestQueue(BrowseOffersActivity.this);
+        r.fetch(BrowseOffersActivity.this, requestQueue, mSwipeView);
+
+        System.out.println("Array browsed: " + r.getArray());
+        if(r.getArray() != null) {
+            for(Offer offer : Utils.loadProfiles(BrowseOffersActivity.this, r.getArray())){
+                mSwipeView.addView(new AdCard(mContext, offer, mSwipeView));
+            }
         }
+
 
         findViewById(R.id.rejectBtn).setOnClickListener(new android.view.View.OnClickListener() {
             @Override

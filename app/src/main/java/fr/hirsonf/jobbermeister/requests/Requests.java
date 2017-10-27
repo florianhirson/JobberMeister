@@ -24,6 +24,7 @@ package fr.hirsonf.jobbermeister.requests;
         import com.android.volley.toolbox.JsonArrayRequest;
         import com.android.volley.toolbox.JsonObjectRequest;
         import com.android.volley.toolbox.Volley;
+        import com.mindorks.placeholderview.SwipePlaceHolderView;
 
         import org.json.JSONArray;
         import org.json.JSONException;
@@ -33,11 +34,15 @@ package fr.hirsonf.jobbermeister.requests;
         import java.io.OutputStreamWriter;
         import java.net.HttpURLConnection;
         import java.util.ArrayList;
+        import java.util.Iterator;
 
         import fr.hirsonf.jobbermeister.activities.BrowseOffersActivity;
         import fr.hirsonf.jobbermeister.activities.LoginActivity;
         import fr.hirsonf.jobbermeister.activities.RegisterCredentialsActivity;
         import fr.hirsonf.jobbermeister.activities.RegisterProfileActivity;
+        import fr.hirsonf.jobbermeister.cards.AdCard;
+        import fr.hirsonf.jobbermeister.cards.Utils;
+        import fr.hirsonf.jobbermeister.model.Offer;
         import fr.hirsonf.jobbermeister.model.User;
 
 /**
@@ -46,7 +51,6 @@ package fr.hirsonf.jobbermeister.requests;
 
 public class Requests {
     private final String BASE_URL = "http://10.19.0.165:8080/jobber/";
-    public static RequestQueue requestQueue;
     String url;
 
     public JSONArray getArray() {
@@ -60,10 +64,10 @@ public class Requests {
     private JSONArray array;
     public Requests () {}
 
-    public void doLoginRequest(final Context context, final String login, final String mdp) {
+    public void doLoginRequest(final Context context, final String login, final String mdp, RequestQueue requestQueue) {
         url = BASE_URL + "app/" + login + "/" + mdp;
 
-        requestQueue = Volley.newRequestQueue(context);
+
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -114,7 +118,7 @@ public class Requests {
         requestQueue.add(jsObjRequest);
     }
 
-    public void doLoginExistRequest(final Context context, final User user) {
+    public void doLoginExistRequest(final Context context, final User user, RequestQueue requestQueue) {
         url = BASE_URL + user.getLogin();
         requestQueue = Volley.newRequestQueue(context);
 
@@ -186,57 +190,62 @@ public class Requests {
         requestQueue.add(jsObjRequest);
     }
 
-    public void doListOffersRequest(Context context) {
+    public void fetch(final Context context, RequestQueue requestQueue, final SwipePlaceHolderView mSwipeView) {
         url = BASE_URL + "offer/";
-        System.out.println("Context : " + context);
-        System.out.println("Url : " + url);
-        requestQueue = Volley.newRequestQueue(context);
 
-        // Initialize a new JsonArrayRequest instance
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                Request.Method.GET,
-                url,
-                null,
-                new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsArrayRequest = new JsonArrayRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+
                     @Override
                     public void onResponse(JSONArray response) {
-                        System.out.println(response.toString());
-                        array = response;
-                    }
-                },
-                new Response.ErrorListener(){
-                    @Override
-                    public void onErrorResponse(VolleyError error){
-                        System.out.println(error.networkResponse.data.toString());
-                    }
-                }
-        );
+                        System.out.println("Réponse 2: " +response);
 
-        // Add JsonArrayRequest to the RequestQueue
-        requestQueue.add(jsonArrayRequest);
-        System.out.println("json array request : " + jsonArrayRequest);
-    }
+                            array = response;
+                        for(Offer offer : Utils.loadProfiles(context, response)){
+                            mSwipeView.addView(new AdCard(context, offer, mSwipeView));
+                        }
 
-    public void fetch(Context context) {
-        System.out.println("Fetch ! ");
-        requestQueue = Volley.newRequestQueue(context);
-        System.out.println("Fetch 2! ");
-        JsonArrayRequest request = new JsonArrayRequest( url = BASE_URL + "offer/",
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray jsonArray) {
-                        System.out.println("Json Array 1 : " + jsonArray);
-                        array = jsonArray;
+
+
                     }
-                },
-                new Response.ErrorListener() {
+                }, new Response.ErrorListener() {
+
                     @Override
-                    public void onErrorResponse(VolleyError volleyError) {
-                        System.out.println("Unable to fetch data: " + volleyError.getMessage());
+                    public void onErrorResponse(VolleyError error) {
+                        if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                            Toast.makeText(context,
+                                    "Error Timeout ! : " + error,
+                                    Toast.LENGTH_LONG).show();
+                            System.out.println("url : " + url);
+                            System.out.println(error);
+                        } else if (error instanceof AuthFailureError) {
+                            Toast.makeText(context,
+                                    "Error d'authentification ! : " + error,
+                                    Toast.LENGTH_LONG).show();
+                            System.out.println("url : " + url);
+                            System.out.println(error);
+                        } else if (error instanceof ServerError) {
+                            Toast.makeText(context,
+                                    "Error de Serveur ! : " + error,
+                                    Toast.LENGTH_LONG).show();
+                            System.out.println("url : " + url);
+                            System.out.println(error);
+                        } else if (error instanceof NetworkError) {
+                            Toast.makeText(context,
+                                    "Error de Réseau ! : " + error,
+                                    Toast.LENGTH_LONG).show();
+                            System.out.println("url : " + url);
+                            System.out.println(error);
+                        } else if (error instanceof ParseError) {
+                            Toast.makeText(context,
+                                    "Error de Parsing ! : " + error,
+                                    Toast.LENGTH_LONG).show();
+                            System.out.println("url : " + url);
+                            System.out.println(error);
+                        }
                     }
                 });
-
-        requestQueue.add(request);
+        requestQueue.add(jsArrayRequest);
     }
 
 }
